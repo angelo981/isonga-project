@@ -1,0 +1,115 @@
+﻿{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}{{ talent.name }} | Talent Story | ISONGA CENTRE{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  .talent-detail-hero {
+    position: relative; min-height: 68vh; display: flex; align-items: flex-end;
+    overflow: hidden; background: #111;
+  }
+  .talent-detail-hero .hero-photo {
+    position: absolute; inset: 0; background-size: cover; background-position: center;
+    background-image: url('{% static talent.image %}');
+    filter: brightness(0.52);
+  }
+  .talent-detail-hero .hero-overlay {
+    position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,17,17,0.3), rgba(17,17,17,0.9));
+  }
+  .talent-detail-hero .hero-inner {
+    position: relative; z-index: 2; padding: 80px 40px 64px; max-width: 1040px; margin: 0 auto; color: #fff;
+  }
+  .talent-detail-hero .hero-bread { display: flex; flex-wrap: wrap; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.88rem; margin-bottom: 18px; }
+  .talent-detail-hero .hero-bread a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .talent-detail-hero h1 { font-family: var(--font-serif); font-size: clamp(2.4rem, 5vw, 4.3rem); line-height: 1.02; margin-bottom: 18px; }
+  .talent-detail-hero h1 em { font-style: italic; font-weight: 400; color: #93c9f7; }
+  .talent-detail-hero p.lead { max-width: 760px; font-size: 1.05rem; line-height: 1.78; color: rgba(255,255,255,0.82); margin-bottom: 24px; }
+  .talent-detail-hero .hero-tag { display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; border-radius: 999px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.16); font-weight: 600; letter-spacing: 0.02em; }
+  .talent-detail-body { padding: 72px 40px 120px; background: #faf9f6; }
+  .talent-detail-wrap { max-width: 1080px; margin: 0 auto; display: grid; gap: 48px; }
+  .talent-detail-grid { display: grid; grid-template-columns: 1fr 320px; gap: 36px; align-items: start; }
+  .talent-detail-content { background: #fff; border-radius: 28px; border: 1px solid #ece9e4; padding: 42px; box-shadow: 0 18px 60px rgba(0,0,0,0.05); }
+  .talent-detail-content h2 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 24px; }
+  .talent-detail-content p { color: #43413f; line-height: 1.8; margin-bottom: 22px; font-size: 1rem; }
+  .talent-detail-content ul { padding-left: 22px; margin-bottom: 28px; }
+  .talent-detail-content li { margin-bottom: 12px; font-size: 1rem; color: #4f4a47; }
+  .talent-detail-sidebar { display: grid; gap: 24px; }
+  .talent-card-small { background: #fff; border-radius: 22px; border: 1px solid #ebe7e1; padding: 28px; }
+  .talent-card-small h3 { font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 16px; }
+  .talent-card-small p { color: #615d59; margin-bottom: 16px; }
+  .talent-card-small .pill { display: inline-flex; padding: 8px 14px; border-radius: 999px; background: #eef5fb; color: #26659f; font-size: 0.85rem; font-weight: 700; }
+  .related-talent-list { display: grid; gap: 18px; }
+  .related-talent-item { display: block; padding: 18px 22px; border-radius: 20px; background: #fff; border: 1px solid #ebe7e1; text-decoration: none; color: #2f2c29; }
+  .related-talent-item h4 { margin: 0 0 8px; font-size: 1rem; }
+  .related-talent-item p { margin: 0; color: #66615e; font-size: 0.95rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero talent-detail-hero">
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-bread">
+      <a href="{% url 'home' %}">Home</a>
+      <span class="sep">›</span>
+      <a href="{% url 'talent' %}">Talent & Stories</a>
+      <span class="sep">›</span>
+      <span>{{ talent.name }}</span>
+    </div>
+    <span class="hero-tag">{{ talent.discipline }}</span>
+    <h1>{{ talent.headline }}<br><em>{{ talent.name }}</em></h1>
+    <p class="lead">{{ talent.excerpt }}</p>
+  </div>
+</section>
+
+<section class="talent-detail-body">
+  <div class="talent-detail-wrap">
+    <div class="talent-detail-grid">
+      <div class="talent-detail-content">
+        <h2>Story & Growth</h2>
+        {% for paragraph in talent.story %}
+          <p>{{ paragraph }}</p>
+        {% endfor %}
+
+        <h2>Key achievements</h2>
+        <ul>
+          {% for item in talent.impact %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+
+        <blockquote style="margin:40px 0; padding:28px 32px; border-left:4px solid #4A90C4; background:#f3f9ff; border-radius:16px;">
+          <p style="margin:0; font-family:var(--font-serif); font-size:1.15rem; color:#1f415f; line-height:1.7;">{{ talent.quote }}</p>
+          <cite style="display:block; margin-top:16px; color:#56504a; font-size:0.92rem;">— {{ talent.quote_author }}, {{ talent.quote_role }}</cite>
+        </blockquote>
+      </div>
+
+      <aside class="talent-detail-sidebar">
+        <div class="talent-card-small">
+          <h3>Milestones</h3>
+          <ul>
+            {% for milestone in talent.milestones %}
+              <li>{{ milestone }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="talent-card-small">
+          <h3>More Talent Stories</h3>
+          <div class="related-talent-list">
+            {% for related in related_talents %}
+              <a class="related-talent-item" href="{% url 'talent_detail' related.slug %}">
+                <h4>{{ related.name }}</h4>
+                <p>{{ related.discipline }} — {{ related.excerpt }}</p>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+{% endblock %}

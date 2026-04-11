@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ISONGA CENTRE{% endblock %}</title>
+    <meta name="description" content="ISONGA CENTRE is a creative, cultural, and youth empowerment hub in Musanze, Rwanda.">
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a href="{% url 'home' %}" class="logo">ISONGA <span>CENTRE</span></a>
+            <nav>
+                <ul class="nav">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'programs' %}">Programs</a></li>
+                    <li><a href="{% url 'events' %}">Events</a></li>
+                    <li><a href="{% url 'talent' %}">Talent</a></li>
+                    <li><a href="{% url 'partnerships' %}">Partnerships</a></li>
+                    <li><a href="{% url 'media_gallery' %}">Media</a></li>
+                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    {% if messages %}
+    <section class="messages container">
+        {% for message in messages %}
+        <div class="message">{{ message }}</div>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="{% url 'home' %}">ISONGA CENTRE</a>
+        <p>A creative, cultural, and youth empowerment hub in Musanze, Rwanda. Owned and operated by TOP5SAI Ltd.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <a href="{% url 'programs' %}">Soft Skills</a>
+        <a href="{% url 'programs' %}">Digital Skills</a>
+        <a href="{% url 'programs' %}">Media Basics</a>
+        <a href="{% url 'programs' %}">Entrepreneurship</a>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="{% url 'events' %}">Events</a>
+        <a href="{% url 'talent' %}">Talent</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'partnerships' %}">Partnerships</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="{% url 'contact' %}">Musanze, Rwanda</a>
+        <a href="mailto:info@isonga.rw">info@isonga.rw</a>
+        <a href="tel:+250700000000">+250 700 000 000</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 ISONGA CENTRE / TOP5SAI Ltd. All rights reserved.</span>
+      <span>Built with ❤️ in Rwanda</span>
+    </div>
+  </div>
+</footer>
+
+{% block extra_js %}{% endblock %}
+</body>
+</html>

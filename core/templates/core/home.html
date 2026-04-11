@@ -1,0 +1,417 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}ISONGA CENTRE | Home{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+{% endblock %}
+{% block content %}
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+
+  <!-- Geometric background pattern -->
+  <div class="hero-bg">
+    <div class="hero-bg-shapes">
+      <div class="shape s1"></div>
+      <div class="shape s2"></div>
+      <div class="shape s3"></div>
+      <div class="shape s4"></div>
+      <div class="shape s5"></div>
+    </div>
+    <div class="hero-bg-grid"></div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-body">
+    <div class="hero-left">
+      <p class="hero-tag">Owned by TOP5SAI Ltd &mdash; Musanze, Rwanda</p>
+      <h1>My talent<br><em>My business</em></h1>
+      <p class="hero-lead">ISONGA CENTRE is a hybrid creative, cultural, and youth empowerment hub — designed to help young people build skills, discover talent, and grow into the next generation of creative professionals.</p>
+      <div class="hero-btns">
+        <a class="btn btn-solid" href="#">Join a Program</a>
+        <a class="btn btn-glass" href="#">Partner With Us</a>
+      </div>
+      <div class="feature-pills">
+        <span class="pill"><span class="pill-dot"></span>Creative Arts</span>
+        <span class="pill"><span class="pill-dot"></span>Music &amp; Performance</span>
+        <span class="pill"><span class="pill-dot"></span>Digital Skills</span>
+        <span class="pill"><span class="pill-dot"></span>Youth Incubation</span>
+        <span class="pill"><span class="pill-dot"></span>Cultural Events</span>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="stat-grid">
+        <div class="stat-card"><strong>500+</strong><span>Youth Annually</span></div>
+        <div class="stat-card"><strong>100+</strong><span>Events Planned</span></div>
+        <div class="stat-card"><strong>10+</strong><span>Partnerships</span></div>
+        <div class="stat-card"><strong>6</strong><span>Core Programs</span></div>
+      </div>
+      <div class="event-card">
+        <div class="event-card-top">
+          <span class="event-label">Next Up</span>
+          <span class="event-badge">Register Free</span>
+        </div>
+        <p class="event-title">ISONGA Talent Showcase — 2025 Season Opener</p>
+        <div class="event-meta">
+          <span>July 12, 2025</span>
+          <span>Musanze Cultural Hall</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ AUTO-SLIDING EVENT STRIP ══ -->
+  <div class="event-strip">
+    <div class="strip-header">
+      <span class="strip-title">Featured Events</span>
+    </div>
+
+    <div class="strip-track-wrap">
+      <div class="strip-track">
+
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Music</p>
+            <p class="ecard-name">Youth Beat Festival</p>
+            <p class="ecard-date">Jul 12, 2025</p>
+          </div>
+        </div>
+
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Dance</p>
+            <p class="ecard-name">Move &amp; Express Showcase</p>
+            <p class="ecard-date">Jul 26, 2025</p>
+          </div>
+        </div>
+
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Culture</p>
+            <p class="ecard-name">Rwanda Roots Night</p>
+            <p class="ecard-date">Aug 3, 2025</p>
+          </div>
+        </div>
+
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Arts</p>
+            <p class="ecard-name">Creative Studio Open Day</p>
+            <p class="ecard-date">Aug 17, 2025</p>
+          </div>
+        </div>
+
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Performance</p>
+            <p class="ecard-name">ISONGA Grand Finale 2025</p>
+            <p class="ecard-date">Sep 6, 2025</p>
+          </div>
+        </div>
+
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Tech</p>
+            <p class="ecard-name">Digital Creators Bootcamp</p>
+            <p class="ecard-date">Sep 20, 2025</p>
+          </div>
+        </div>
+
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1501386761578-eaa54b3e5a4c?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Community</p>
+            <p class="ecard-name">Youth Summit Musanze</p>
+            <p class="ecard-date">Oct 4, 2025</p>
+          </div>
+        </div>
+
+        <!-- Duplicate for seamless loop -->
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Music</p>
+            <p class="ecard-name">Youth Beat Festival</p>
+            <p class="ecard-date">Jul 12, 2025</p>
+          </div>
+        </div>
+
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Dance</p>
+            <p class="ecard-name">Move &amp; Express Showcase</p>
+            <p class="ecard-date">Jul 26, 2025</p>
+          </div>
+        </div>
+
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Culture</p>
+            <p class="ecard-name">Rwanda Roots Night</p>
+            <p class="ecard-date">Aug 3, 2025</p>
+          </div>
+        </div>
+
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Arts</p>
+            <p class="ecard-name">Creative Studio Open Day</p>
+            <p class="ecard-date">Aug 17, 2025</p>
+          </div>
+        </div>
+
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Performance</p>
+            <p class="ecard-name">ISONGA Grand Finale 2025</p>
+            <p class="ecard-date">Sep 6, 2025</p>
+          </div>
+        </div>
+
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Tech</p>
+            <p class="ecard-name">Digital Creators Bootcamp</p>
+            <p class="ecard-date">Sep 20, 2025</p>
+          </div>
+        </div>
+
+        <div class="ecard">
+          <div class="ecard-img" style="background-image:url('https://images.unsplash.com/photo-1501386761578-eaa54b3e5a4c?w=600&q=80')"></div>
+          <div class="ecard-overlay"></div>
+          <div class="ecard-info">
+            <p class="ecard-cat">Community</p>
+            <p class="ecard-name">Youth Summit Musanze</p>
+            <p class="ecard-date">Oct 4, 2025</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="strip-fade-left"></div>
+    <div class="strip-fade"></div>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="hero-bottom-left"></div>
+    <a class="scroll-hint" href="#pillars">
+      <span>Explore</span>
+      <svg width="14" height="18" viewBox="0 0 14 18" fill="none">
+        <path d="M7 1v12M1 9l6 7 6-7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+</section>
+
+<!-- ══════════════ THREE PILLARS ══════════════ -->
+<section class="pillars-bg" id="pillars">
+  <div class="wrap">
+    <div style="max-width:580px; margin-bottom:52px;">
+      <p class="eyebrow">What We Do</p>
+      <h2 class="sec-title">A Centre Built for Growth,<br><em>Creativity & Opportunity</em></h2>
+      <p class="sec-sub">Three powerful dimensions that create a complete ecosystem for Rwanda's emerging creative generation.</p>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-bg" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80');"></div>
+        <div class="pillar-shade"></div>
+        <div class="pillar-body">
+          <p class="pillar-num">01 —</p>
+          <h3>Youth Empowerment</h3>
+          <p>Practical soft skills, digital exposure, communication, and entrepreneurial thinking for the modern world.</p>
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-bg" style="background-image:url('{% static 'img/pic8.jpg' %}')"></div>
+        <div class="pillar-shade"></div>
+        <div class="pillar-body">
+          <p class="pillar-num">02 —</p>
+          <h3>Talent Incubation</h3>
+          <p>We identify and nurture promising talent in music, media, dance, comedy, film, and performance arts.</p>
+        </div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-bg" style="background-image:url('{% static 'img/pic4.jpg' %}')"></div>
+        <div class="pillar-shade"></div>
+        <div class="pillar-body">
+          <p class="pillar-num">03 —</p>
+          <h3>Cultural Programming</h3>
+          <p>Workshops, movie nights, exhibitions, live performances, showcases, and vibrant community events.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ WHY ISONGA EXISTS ══════════════ -->
+<section class="why-bg">
+  <div class="wrap">
+    <div class="why-grid">
+      <div class="why-photo-wrap">
+        <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=900&q=80" alt="Young creatives at Isonga Centre" loading="lazy">
+        <div class="why-badge">
+          <div class="why-badge-icon">🎯</div>
+          <div>
+            <strong>Closing the Gap</strong>
+            <span>Connecting talent to opportunity in Musanze</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-text">
+        <p class="eyebrow">Our Purpose</p>
+        <h2 class="sec-title">Why ISONGA<br><em>Centre Exists</em></h2>
+        <p>Rwanda's creative economy is growing fast, but many young people and emerging artists still lack access to professional spaces, structured mentorship, and market connections.</p>
+        <p>ISONGA CENTRE was created to close that gap. Based in Musanze, we provide an accessible platform where youth and creatives can learn, perform, connect, and build their future.</p>
+        <div class="stats-row">
+          <div class="stat-cell"><strong>500+</strong><span>Youth Annually</span></div>
+          <div class="stat-cell"><strong>100+</strong><span>Events & Activities</span></div>
+          <div class="stat-cell"><strong>10+</strong><span>Partnerships</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PROGRAMS ══════════════ -->
+<section class="programs-bg">
+  <div class="wrap">
+    <div class="row-apart">
+      <div>
+        <p class="eyebrow">What's Available</p>
+        <h2 class="sec-title">Opportunities<br><em>at ISONGA</em></h2>
+      </div>
+      <a class="view-all" href="#">View All Programs →</a>
+    </div>
+
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="prog-icon">💼</div>
+        <h3>Soft Skills & Employability</h3>
+        <p>Communication, leadership, teamwork, and professional readiness for the modern workforce.</p>
+      </div>
+      <div class="program-card">
+        <div class="prog-icon">💻</div>
+        <h3>Digital & Creative Skills</h3>
+        <p>Hands-on learning in design, digital tools, content creation, and online platforms.</p>
+      </div>
+      <div class="program-card">
+        <div class="prog-icon">🎙️</div>
+        <h3>Media & Broadcasting Basics</h3>
+        <p>Introduction to radio, video production, podcasting, and storytelling through media.</p>
+      </div>
+      <div class="program-card">
+        <div class="prog-icon">🚀</div>
+        <h3>Creative Entrepreneurship</h3>
+        <p>Turn your creative ideas into sustainable businesses with mentorship and practical tools.</p>
+      </div>
+      <div class="program-card">
+        <div class="prog-icon">🎭</div>
+        <h3>Talent Auditions & Incubation</h3>
+        <p>Open auditions followed by dedicated coaching and development pathways for selected artists.</p>
+      </div>
+      <div class="program-card">
+        <div class="prog-icon">🎪</div>
+        <h3>Workshops, Showcases & Events</h3>
+        <p>Regular public events that build community, celebrate talent, and create visibility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ EVENTS ══════════════ -->
+<section class="events-bg">
+  <div class="wrap">
+    <div class="row-apart">
+      <div>
+        <p class="eyebrow" style="color:#7ab8d9;">Coming Up</p>
+        <h2 class="sec-title" style="color:#fff;">What's <em style="color:#7ab8d9;">Happening</em></h2>
+      </div>
+      <a class="view-all" style="color:#7ab8d9;" href="#">See All Events →</a>
+    </div>
+
+    <div class="events-grid">
+      <div class="event-card">
+        <span class="event-tag">May 10, 2025</span>
+        <h3>Creative Youth Open Day</h3>
+        <p>Explore the Centre, meet mentors, and discover which programs are right for you.</p>
+      </div>
+      <div class="event-card">
+        <span class="event-tag">May 24, 2025</span>
+        <h3>Talent Showcase Night</h3>
+        <p>Our quarterly performance showcase — featuring music, dance, comedy and spoken word.</p>
+      </div>
+      <div class="event-card">
+        <span class="event-tag">June 7, 2025</span>
+        <h3>Digital Skills Bootcamp</h3>
+        <p>A 3-day intensive covering content creation, social media, and digital entrepreneurship.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ IMPACT ══════════════ -->
+<section class="impact-bg">
+  <div class="impact-scene"></div>
+  <div class="wrap">
+    <div class="impact-content">
+      <p class="eyebrow">Impact Stories</p>
+      <h2 class="sec-title">From Potential<br>to <em>Progress</em></h2>
+      <p>Every young person who finds confidence, every artist who gains exposure, and every creative who takes a step toward professionalism is part of the ISONGA story.</p>
+      <a class="btn btn-solid" href="{% url 'blog' %}">Read Success Stories</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ LOCATION / MAP ══════════════ -->
+<section class="location-bg" style="padding:80px 0; background:#f8fafb;">
+  <div class="wrap">
+    <div class="row-apart" style="align-items:center; gap:36px;">
+      <div style="max-width:520px;">
+        <p class="eyebrow">Visit Us</p>
+        <h2 class="sec-title">ISONGA CENTRE in Musanze<br><em>Find us on the map</em></h2>
+        <p>Join us at the heart of Rwanda's creative ecosystem. See our exact location, get directions, and plan your visit to our workspace and community hub.</p>
+      </div>
+      <div style="width:calc(100% - 560px); min-height:320px; border:1px solid #dbe6ef; border-radius:18px; overflow:hidden;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3051.5903750908034!2d29.52644451522161!3d-1.5002812987130389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d9c52abe8912f7%3A0x339a1a43a8082d5f!2sMusanze%20City%2C%20Northern%20Province%2C%20Rwanda!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'core/js/home.js' %}"></script>
+{% endblock %}

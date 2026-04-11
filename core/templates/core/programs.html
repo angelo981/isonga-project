@@ -1,0 +1,266 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Programs | ISONGA CENTRE{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'core/css/programs.css' %}">
+<style>
+ 
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-arc"></div>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-bread">
+        <a href="{% url 'home' %}">Home</a>
+        <span class="sep">›</span>
+        <span class="cur">Programs</span>
+      </div>
+      <h1>Programs &amp;<br><em>Opportunities</em></h1>
+      <p>ISONGA CENTRE offers practical programs designed to help youth and creatives build skills, gain real exposure, and access the opportunities they deserve.</p>
+    </div>
+
+    <div class="hero-nav">
+      <p class="hero-nav-label">Jump to a program</p>
+      <ul>
+        <li><a href="#youth-empowerment"><span class="dot"></span>Youth Empowerment</a></li>
+        <li><a href="#digital-creative"><span class="dot"></span>Digital &amp; Creative Skills</a></li>
+        <li><a href="#media-broadcasting"><span class="dot"></span>Media &amp; Broadcasting</a></li>
+        <li><a href="#talent-incubation"><span class="dot"></span>Talent Incubation</a></li>
+        <li><a href="#workshops"><span class="dot"></span>Workshops &amp; Events</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="wrap">
+    <div class="stats-inner">
+      <div class="s-stat"><strong>4</strong><span>Core Programs</span></div>
+      <div class="s-stat"><strong>500+</strong><span>Youth Annually</span></div>
+      <div class="s-stat"><strong>16+</strong><span>Modules Offered</span></div>
+      <div class="s-stat"><strong>100+</strong><span>Events Planned</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SECTION INTRO -->
+<div class="sec-intro">
+  <div class="wrap">
+    <div class="sec-intro-row">
+      <div>
+        <p class="eyebrow">What We Offer</p>
+        <h2>Four Core <em>Program Tracks</em></h2>
+      </div>
+      <p class="sec-intro-note">Each program is designed to take you from where you are to where you want to be — through practical learning, mentorship, and real-world experience.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- PROGRAM CARDS -->
+<section class="programs-sec">
+  <div class="wrap">
+    <div class="prog-stack">
+
+      <!-- 1 -->
+      <article class="prog-card" id="youth-empowerment">
+        <div class="pphoto">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80" alt="Youth Empowerment program" loading="lazy">
+          <div class="pphoto-shade"></div>
+          <span class="pnum">01</span>
+        </div>
+        <div class="pbody">
+          <p class="ptag">Youth Development</p>
+          <h2>Youth Empowerment &amp; Skills Development</h2>
+          <p class="pdesc">This program equips youth with practical skills for personal development, employability, leadership, and entrepreneurship — building the confidence and capability to succeed in any path they choose.</p>
+          <ul class="pmodules">
+            <li>Communication &amp; Public Speaking</li>
+            <li>Leadership &amp; Teamwork</li>
+            <li>Career Readiness</li>
+            <li>Creative Entrepreneurship</li>
+          </ul>
+          <div class="pfooter">
+            <span class="pbadge">🗓 Open Intake</span>
+            <a class="papply" href="{% url 'contact' %}">Apply Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="prog-card flip" id="digital-creative">
+        <div class="pphoto">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Digital and Creative Skills program" loading="lazy">
+          <div class="pphoto-shade"></div>
+          <span class="pnum">02</span>
+        </div>
+        <div class="pbody">
+          <p class="ptag">Digital Skills</p>
+          <h2>Digital &amp; Creative Skills</h2>
+          <p class="pdesc">We introduce youth and emerging creatives to tools and techniques that strengthen their ability to create, communicate, and work effectively in modern creative industries.</p>
+          <ul class="pmodules">
+            <li>Content Creation</li>
+            <li>Graphic Design Basics</li>
+            <li>Social Media Management</li>
+            <li>Digital Marketing Fundamentals</li>
+          </ul>
+          <div class="pfooter">
+            <span class="pbadge">💻 Practical Learning</span>
+            <a class="papply" href="{% url 'contact' %}">Apply Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="prog-card" id="media-broadcasting">
+        <div class="pphoto">
+          <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&q=80" alt="Media and Broadcasting program" loading="lazy">
+          <div class="pphoto-shade"></div>
+          <span class="pnum">03</span>
+        </div>
+        <div class="pbody">
+          <p class="ptag">Media &amp; Broadcasting</p>
+          <h2>Media &amp; Broadcasting Basics</h2>
+          <p class="pdesc">Through the TOP5SAI and Energy Radio ecosystem, participants gain foundational exposure to media and communication — learning by doing inside a real broadcast environment.</p>
+          <ul class="pmodules">
+            <li>Radio Journalism Basics</li>
+            <li>Voice Training</li>
+            <li>Audio Recording Basics</li>
+            <li>Storytelling for Media</li>
+          </ul>
+          <div class="pfooter">
+            <span class="pbadge">📻 Powered by Energy Radio</span>
+            <a class="papply" href="{% url 'contact' %}">Apply Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="prog-card flip" id="talent-incubation">
+        <div class="pphoto">
+          <img src="{% static 'img/pic5.jpg' %}" alt="Talent Incubation program" loading="lazy">
+          <div class="pphoto-shade"></div>
+          <span class="pnum">04</span>
+        </div>
+        <div class="pbody">
+          <p class="ptag">Talent Incubation</p>
+          <h2>Talent Incubation</h2>
+          <p class="pdesc">This pathway supports emerging creatives who show promise and commitment — providing structured coaching, mentorship, production access, and real stage opportunities.</p>
+          <ul class="pmodules">
+            <li>Music &amp; Performing Arts</li>
+            <li>Dance &amp; Cultural Performance</li>
+            <li>Comedy &amp; Spoken Expression</li>
+            <li>Acting &amp; Content Performance</li>
+          </ul>
+          <div class="pfooter">
+            <span class="pbadge">🎭 By Audition</span>
+            <a class="papply" href="{% url 'contact' %}">Apply Now</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- WORKSHOPS & EVENTS -->
+<section class="workshops-sec" id="workshops">
+  <div class="wrap">
+    <div class="wshops-head">
+      <p class="eyebrow">Also Available</p>
+      <h2>Workshops, <em>Showcases &amp; Events</em></h2>
+      <p>Alongside our core programs, ISONGA CENTRE hosts regular one-off events open to the wider community — no registration required for most.</p>
+    </div>
+
+    <div class="wshops-grid">
+      <div class="wcard">
+        <div class="wicon">🎤</div>
+        <h3>Live Performance Showcases</h3>
+        <p>Quarterly events where trained talent performs for a real audience and gains industry exposure.</p>
+      </div>
+      <div class="wcard">
+        <div class="wicon">🎬</div>
+        <h3>Film Screenings &amp; Discussions</h3>
+        <p>Curated movie nights featuring African and international films, followed by guided discussions.</p>
+      </div>
+      <div class="wcard">
+        <div class="wicon">🖼️</div>
+        <h3>Art &amp; Culture Exhibitions</h3>
+        <p>Rotating exhibitions showcasing work by local creatives, students, and community artists.</p>
+      </div>
+      <div class="wcard">
+        <div class="wicon">🧠</div>
+        <h3>Guest Talks &amp; Masterclasses</h3>
+        <p>Industry professionals share knowledge, career stories, and practical advice with participants.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section class="process-sec">
+  <div class="wrap">
+    <div class="proc-head">
+      <p class="eyebrow">Your Journey</p>
+      <h2>How It <em>Works</em></h2>
+      <p>From first enquiry to program completion — here is the simple four-step path to joining ISONGA CENTRE.</p>
+    </div>
+
+    <div class="proc-steps">
+      <div class="proc-step">
+        <div class="step-num">1</div>
+        <h3>Apply or Enquire</h3>
+        <p>Fill in our contact form or visit the Centre to express your interest in any program.</p>
+      </div>
+      <div class="proc-step">
+        <div class="step-num">2</div>
+        <h3>Assessment &amp; Intake</h3>
+        <p>We assess your needs and place you in the right program track for your goals.</p>
+      </div>
+      <div class="proc-step">
+        <div class="step-num">3</div>
+        <h3>Train &amp; Grow</h3>
+        <p>Attend sessions, work with mentors, build your skills, and complete your program.</p>
+      </div>
+      <div class="proc-step">
+        <div class="step-num">4</div>
+        <h3>Perform &amp; Progress</h3>
+        <p>Showcase your work, access new opportunities, and continue your journey beyond ISONGA.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Ready to Take the Next Step?</h2>
+        <p>Whether you want to apply for a training program, learn about talent incubation, or simply meet the team — we are here and ready to welcome you.</p>
+      </div>
+      <div class="cta-btns">
+        <a class="btn btn-white" href="{% url 'contact' %}">Apply for a Program</a>
+        <a class="btn btn-ghost" href="{% url 'contact' %}">Contact the Team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,329 @@
+{% extends 'core/base.html' %}
+{%load static %}
+{% block title %}Events | ISONGA CENTRE{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'core/css/events.css' %}">
+<style>
+ 
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-arc"></div>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-bread">
+        <a href="{% url 'home' %}">Home</a>
+        <span class="sep">›</span>
+        <span class="cur">Events</span>
+      </div>
+      <h1>Events &amp;<br><em>Activities</em></h1>
+      <p>ISONGA CENTRE hosts a dynamic calendar of public events that celebrate creativity, culture, learning, and connection — there is always something happening.</p>
+    </div>
+
+    <!-- Featured next event teaser -->
+    <div class="hero-feature">
+      <div class="hf-img">
+        <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=700&q=80" alt="Upcoming event at Isonga Centre" loading="lazy">
+      </div>
+      <div class="hf-body">
+        <span class="hf-pill">🔥 Next Up</span>
+        <h3>Acoustic Sessions — Live Night</h3>
+        <p>An intimate evening of emerging Rwandan music talent in the heart of Musanze.</p>
+        <div class="hf-meta">
+          <span class="hf-tag">📅 May 10, 2025</span>
+          <span class="hf-tag">📍 ISONGA CENTRE</span>
+          <span class="hf-tag">🎟 Free Entry</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FILTER BAR
+══════════════════════════════════════ -->
+<div class="filter-bar">
+  <div class="wrap">
+    <div class="filter-inner">
+      <a href="#" class="f-chip active">All Events</a>
+      <a href="#" class="f-chip">🎵 Music</a>
+      <a href="#" class="f-chip">🎬 Film</a>
+      <a href="#" class="f-chip">🎭 Showcase</a>
+      <a href="#" class="f-chip">🎨 Workshop</a>
+      <a href="#" class="f-chip">😂 Comedy</a>
+      <a href="#" class="f-chip">🎭 Rwandan Cultural Events</a>
+      <a href="#" class="f-chip">🌟 Free Entry</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     UPCOMING EVENTS — FEATURED
+══════════════════════════════════════ -->
+<section class="upcoming-sec">
+  <div class="wrap">
+    <div class="sec-h">
+      <p class="eyebrow">On the Calendar</p>
+      <h2>Upcoming <em>Events</em></h2>
+      <p>Mark your calendar — here are the events happening at ISONGA CENTRE this season.</p>
+    </div>
+
+    <div class="featured-grid">
+      <!-- Large card -->
+      <div class="ev-featured" style="grid-row: span 2;">
+        <div class="ev-featured-bg" style="background-image:url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=900&q=80');"></div>
+        <div class="ev-featured-shade"></div>
+        <div class="ev-featured-body">
+          <span class="ev-cat cat-music">🎵 Music</span>
+          <h3>Acoustic Sessions — Live Night</h3>
+          <p>An intimate music experience featuring emerging and established performers in a relaxed, inspiring setting at the Centre.</p>
+          <div class="ev-meta">
+            <span class="ev-meta-item">📅 May 10, 2025</span>
+            <span class="ev-meta-item">⏰ 7:00 PM</span>
+            <span class="ev-meta-item">📍 Main Hall</span>
+            <span class="ev-meta-item">🎟 Free Entry</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Small card 1 -->
+      <div class="ev-small">
+        <div class="ev-small-thumb">
+          <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&q=80" alt="Movie Night" loading="lazy">
+        </div>
+        <div class="ev-small-body">
+          <span class="ev-cat cat-film">🎬 Film</span>
+          <h3>Movie Night</h3>
+          <p>Screenings combining entertainment, discussion, and community engagement.</p>
+          <div class="ev-small-date">📅 May 17, 2025 &nbsp;·&nbsp; 6:30 PM</div>
+        </div>
+      </div>
+
+      <!-- Small card 2 -->
+      <div class="ev-small">
+        <div class="ev-small-thumb">
+          <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&q=80" alt="Youth Showcase" loading="lazy">
+        </div>
+        <div class="ev-small-body">
+          <span class="ev-cat cat-showcase">🌟 Showcase</span>
+          <h3>Youth Showcase Night</h3>
+          <p>Participants and incubated talents present what they have created and learned.</p>
+          <div class="ev-small-date">📅 May 24, 2025 &nbsp;·&nbsp; 5:00 PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     ALL EVENT TYPES
+══════════════════════════════════════ -->
+<section class="types-sec">
+  <div class="wrap">
+    <div class="types-head-row">
+      <div>
+        <p class="eyebrow">What We Host</p>
+        <h2>Six Signature <em>Event Formats</em></h2>
+      </div>
+      <a class="view-all" href="#">Full Calendar</a>
+    </div>
+
+    <div class="types-grid">
+
+      <!-- Acoustic Sessions -->
+      <div class="type-card">
+        <div class="type-card-bg" style="background-image:url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&q=80');"></div>
+        <div class="type-card-shade"></div>
+        <div class="type-card-body">
+          <div class="type-icon-wrap">🎸</div>
+          <h3>Acoustic Sessions</h3>
+          <p>An intimate music experience featuring emerging and established performers in a relaxed, engaging setting.</p>
+          <span class="type-freq">Monthly</span>
+        </div>
+      </div>
+
+      <!-- Movie Night -->
+      <div class="type-card">
+        <div class="type-card-bg" style="background-image:url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=700&q=80');"></div>
+        <div class="type-card-shade"></div>
+        <div class="type-card-body">
+          <div class="type-icon-wrap">🎬</div>
+          <h3>Movie Night</h3>
+          <p>Screenings that combine entertainment, discussion, and community engagement around African and global cinema.</p>
+          <span class="type-freq">Bi-monthly</span>
+        </div>
+      </div>
+
+      <!-- Youth Showcase -->
+      <div class="type-card">
+        <div class="type-card-bg" style="background-image:url('{% static "img/youth.jpg" %}');"></div>
+        <div class="type-card-shade"></div>
+        <div class="type-card-body">
+          <div class="type-icon-wrap">🌟</div>
+          <h3>Youth Showcase</h3>
+          <p>A platform where participants and incubated talents present what they have created and learned throughout their journey.</p>
+          <span class="type-freq">Quarterly</span>
+        </div>
+      </div>
+
+      <!-- Creative Workshops -->
+      <div class="type-card">
+        <div class="type-card-bg" style="background-image:url('{% static "img/digital.jpg" %}');"></div>
+        <div class="type-card-shade"></div>
+        <div class="type-card-body">
+          <div class="type-icon-wrap">🎨</div>
+          <h3>Creative Workshops</h3>
+          <p>Hands-on sessions led by facilitators, artists, or partner institutions covering design, media, and expression.</p>
+          <span class="type-freq">Weekly</span>
+        </div>
+      </div>
+
+      <!-- Comedy Nights -->
+      <div class="type-card">
+        <div class="type-card-bg" style="background-image:url('{% static "img/pic6.jpg" %}');"></div>
+        <div class="type-card-shade"></div>
+        <div class="type-card-body">
+          <div class="type-icon-wrap">😂</div>
+          <h3>Comedy 😂</h3>
+          <p>Fresh, vibrant evenings of humor, performance, and youth expression that bring the community together with laughter.</p>
+          <span class="type-freq">Monthly</span>
+        </div>
+      </div>
+
+      <!-- Exhibitions -->
+      <div class="type-card">
+        <div class="type-card-bg" style="background-image:url('{% static "img/culture1.jpg" %}');"></div>
+        <div class="type-card-shade"></div>
+        <div class="type-card-body">
+          <div class="type-icon-wrap">🖼️</div>
+        <div class="event-card">
+          <div class="event-body">
+            <h3>Rwandan Cultural Events</h3>
+            <p>Authentic cultural experiences that celebrate Rwanda’s heritage through traditional dance, music, storytelling, and community gatherings, showcasing the richness of Rwandan identity.</p>
+            <span class="type-freq">Seasonal</span>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     EXPERIENCE NUMBERS
+══════════════════════════════════════ -->
+<section class="xp-strip">
+  <div class="wrap">
+    <div class="xp-grid">
+      <div class="xp-cell">
+        <div class="xp-num">100<span>+</span></div>
+        <h4>Events Each Year</h4>
+        <p>A packed calendar of public, community, and partner events year-round.</p>
+      </div>
+      <div class="xp-cell">
+        <div class="xp-num">6<span> types</span></div>
+        <h4>Event Formats</h4>
+        <p>From intimate acoustic sets to large-scale showcases and exhibitions.</p>
+      </div>
+      <div class="xp-cell">
+        <div class="xp-num">500<span>+</span></div>
+        <h4>Attendees Reached</h4>
+        <p>Community members, creatives, and supporters who gather at our events.</p>
+      </div>
+      <div class="xp-cell">
+        <div class="xp-num">0<span>rwf</span></div>
+        <h4>Cost for Most Events</h4>
+        <p>The majority of our public events are free and open to everyone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     HOST AN EVENT WITH US
+══════════════════════════════════════ -->
+<section class="host-sec">
+  <div class="wrap">
+    <div class="host-band">
+      <div class="host-body">
+        <p class="eyebrow">Venue &amp; Collaboration</p>
+        <h2>Host an Event <em>With Us</em></h2>
+        <p>ISONGA CENTRE offers space and collaboration opportunities for organisations, partners, and producers looking to host creative, educational, or community-focused events in Musanze.</p>
+
+        <div class="host-perks">
+          <span class="perk-chip">🏛️ Flexible Venue Space</span>
+          <span class="perk-chip">🎛️ AV Equipment</span>
+          <span class="perk-chip">🤝 Co-Promotion</span>
+          <span class="perk-chip">👥 Built-in Audience</span>
+          <span class="perk-chip">📍 Central Musanze Location</span>
+          <span class="perk-chip">🎙️ Sound &amp; Staging</span>
+        </div>
+
+        <a class="btn btn-solid" href="{% url 'contact' %}">Inquire About Venue &amp; Collaboration</a>
+      </div>
+
+      <div class="host-photo">
+        <img
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80"
+          alt="Isonga Centre event space"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════ -->
+<section class="cta-band">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Never Miss an <em>Event</em></h2>
+        <p>Follow us on social media or get in touch to be added to our community mailing list — you will always be the first to know what is coming up at ISONGA CENTRE.</p>
+      </div>
+      <div class="cta-btns">
+        <a class="btn btn-white" href="{% url 'contact' %}">Get in Touch</a>
+        <a class="btn btn-ghost" href="{% url 'partnerships' %}">Partner With Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     NEWSLETTER
+══════════════════════════════════════ -->
+<!-- <div class="newsletter">
+  <div class="wrap">
+    <div class="nl-inner">
+      <div class="nl-text">
+        <h3>Stay in the Loop</h3>
+        <p>Subscribe to get monthly event updates delivered straight to your inbox.</p>
+      </div>
+      <form class="nl-form" onsubmit="return false;">
+        <input class="nl-input" type="email" placeholder="Your email address">
+        <a class="btn btn-solid" href="#">Subscribe</a>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+{% endblock %}

@@ -1,0 +1,385 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Partnerships | ISONGA CENTRE{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'core/css/partnerships.css' %}">
+<style>
+ 
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-arc"></div>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-bread">
+        <a href="{% url 'home' %}">Home</a>
+        <span class="sep">›</span>
+        <span class="cur">Partnerships</span>
+      </div>
+      <h1>Partner With<br><em>ISONGA CENTRE</em></h1>
+      <p>ISONGA CENTRE is built on collaboration. We welcome partnerships with institutions, donors, sponsors, cultural centres, NGOs, government actors, and private sector organisations who believe in the power of youth and creativity.</p>
+      <div class="hero-partner-types">
+        <span class="hpt-chip">🏛️ Institutions</span>
+        <span class="hpt-chip">💼 Private Sector</span>
+        <span class="hpt-chip">🌍 NGOs</span>
+        <span class="hpt-chip">🎗 Donors</span>
+        <span class="hpt-chip">🏛 Government</span>
+      </div>
+    </div>
+
+    <!-- Impact numbers card -->
+    <div class="hero-impact">
+      <p class="hi-label">What your partnership touches</p>
+      <div class="hi-stats">
+        <div class="hi-stat">
+          <div class="hi-stat-num">500<span>+</span></div>
+          <div class="hi-stat-divider"></div>
+          <div class="hi-stat-text"><strong>Youth Reached</strong><span>Every year through programs</span></div>
+        </div>
+        <div class="hi-stat">
+          <div class="hi-stat-num">100<span>+</span></div>
+          <div class="hi-stat-divider"></div>
+          <div class="hi-stat-text"><strong>Events &amp; Activities</strong><span>Open to the community</span></div>
+        </div>
+        <div class="hi-stat">
+          <div class="hi-stat-num">10<span>+</span></div>
+          <div class="hi-stat-divider"></div>
+          <div class="hi-stat-text"><strong>Partnership Slots</strong><span>Across four models</span></div>
+        </div>
+      </div>
+      <div class="hi-cta">
+        <a href="{% url 'contact' %}">Get in touch today</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     WHY PARTNER WITH US
+══════════════════════════════════════ -->
+<section class="why-sec">
+  <div class="wrap">
+    <div class="why-grid">
+      <div class="why-content">
+        <p class="eyebrow">The Case for Partnership</p>
+        <h2>Why Partner<br><em>With Us?</em></h2>
+        <p>Partnering with ISONGA means investing in a platform that combines youth empowerment, creative development, cultural participation, community visibility, and measurable practical impact in Rwanda's Northern Province.</p>
+
+        <div class="why-benefits">
+          <div class="why-benefit">
+            <div class="wb-icon">🎯</div>
+            <div class="wb-text">
+              <strong>Targeted Impact</strong>
+              <span>Reach 500+ youth annually with programs that directly build skills, confidence, and career prospects.</span>
+            </div>
+          </div>
+          <div class="why-benefit">
+            <div class="wb-icon">📣</div>
+            <div class="wb-text">
+              <strong>Community Visibility</strong>
+              <span>Gain meaningful brand presence at events, workshops, and showcases attended by the Musanze community.</span>
+            </div>
+          </div>
+          <div class="why-benefit">
+            <div class="wb-icon">🤝</div>
+            <div class="wb-text">
+              <strong>Shared Purpose</strong>
+              <span>Align your organisation with youth empowerment, cultural development, and creative innovation.</span>
+            </div>
+          </div>
+          <div class="why-benefit">
+            <div class="wb-icon">📊</div>
+            <div class="wb-text">
+              <strong>Measurable Outcomes</strong>
+              <span>Receive regular impact reports, participation data, and storytelling that demonstrates your investment.</span>
+            </div>
+          </div>
+          <div class="why-benefit">
+            <div class="wb-icon">🌐</div>
+            <div class="wb-text">
+              <strong>TOP5SAI Ecosystem Access</strong>
+              <span>Connect with the wider network of events, broadcasting, and creative services managed by TOP5SAI Group.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-visual">
+        <div class="why-photo">
+          <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=900&q=80" alt="Partnership at ISONGA Centre" loading="lazy">
+        </div>
+        <div class="why-float-card">
+          <div class="wfc-num">10<span style="font-size:1.2rem;color:var(--sky);">+</span></div>
+          <div class="wfc-label">Partnerships Targeted</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     PARTNERSHIP AREAS
+══════════════════════════════════════ -->
+<section class="areas-sec">
+  <div class="wrap">
+    <div class="areas-head-row">
+      <div>
+        <p class="eyebrow">Where We Collaborate</p>
+        <h2>Partnership <em>Areas</em></h2>
+      </div>
+    </div>
+
+    <div class="areas-grid">
+      <div class="area-card">
+        <div class="area-icon">🎓</div>
+        <div class="area-text">
+          <strong>Youth Skills Development</strong>
+          <span>Co-fund or co-deliver training programs that build employability, leadership, and creative skills.</span>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">🌱</div>
+        <div class="area-text">
+          <strong>Creative Incubation</strong>
+          <span>Support the discovery, nurturing, and launching of emerging creative talent in music, dance, film, and more.</span>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">🌍</div>
+        <div class="area-text">
+          <strong>Cultural Exchange Programs</strong>
+          <span>Partner on exchanges that expose Rwandan youth to global creative practices and bring international perspective home.</span>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">🎪</div>
+        <div class="area-text">
+          <strong>Event Co-Hosting</strong>
+          <span>Join us as an event host or co-producer across showcases, screenings, workshops, and community celebrations.</span>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">📢</div>
+        <div class="area-text">
+          <strong>Sponsorship &amp; Branding</strong>
+          <span>Gain branded visibility at high-attendance events and in program materials reaching youth and community leaders.</span>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">📽️</div>
+        <div class="area-text">
+          <strong>Media &amp; Storytelling</strong>
+          <span>Collaborate on content production, broadcasting, and storytelling through the TOP5SAI media ecosystem.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     PARTNERSHIP MODELS
+══════════════════════════════════════ -->
+<section class="models-sec">
+  <div class="wrap">
+    <div class="models-head">
+      <p class="eyebrow">How We Work Together</p>
+      <h2>Four Partnership <em>Models</em></h2>
+      <p>We offer flexible partnership structures to match the goals, capacity, and interests of every type of collaborator — from long-term institutional alliances to one-off event sponsorships.</p>
+    </div>
+
+    <div class="models-grid">
+
+      <!-- Strategic -->
+      <div class="model-card">
+        <div class="model-card-bg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80');"></div>
+        <div class="model-card-shade"></div>
+        <div class="model-card-body">
+          <p class="model-tag">01 — Long-Term</p>
+          <h3>Strategic Partnerships</h3>
+          <p>Long-term collaboration built around shared programs, impact goals, and institutional growth — with formal agreements, co-branding, and joint reporting.</p>
+          <div class="model-perks">
+            <span class="model-perk">Program Co-Design</span>
+            <span class="model-perk">Joint Branding</span>
+            <span class="model-perk">Impact Reporting</span>
+            <span class="model-perk">Multi-Year Commitment</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sponsorship -->
+      <div class="model-card">
+        <div class="model-card-bg" style="background-image:url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&q=80');"></div>
+        <div class="model-card-shade"></div>
+        <div class="model-card-body">
+          <p class="model-tag">02 — Visibility</p>
+          <h3>Sponsorship Partnerships</h3>
+          <p>Targeted support for events, talent platforms, branded experiences, and youth initiatives — with prominent recognition across all channels and materials.</p>
+          <div class="model-perks">
+            <span class="model-perk">Event Branding</span>
+            <span class="model-perk">Stage Presence</span>
+            <span class="model-perk">Social Promotion</span>
+            <span class="model-perk">Audience Reach</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical -->
+      <div class="model-card">
+        <div class="model-card-bg" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80');"></div>
+        <div class="model-card-shade"></div>
+        <div class="model-card-body">
+          <p class="model-tag">03 — Expertise</p>
+          <h3>Technical Partnerships</h3>
+          <p>Support through professional expertise, training delivery, equipment provision, or content collaboration — contributing knowledge rather than just funding.</p>
+          <div class="model-perks">
+            <span class="model-perk">Training Delivery</span>
+            <span class="model-perk">Equipment Support</span>
+            <span class="model-perk">Expert Mentors</span>
+            <span class="model-perk">Content Collaboration</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Programmatic -->
+      <div class="model-card">
+        <div class="model-card-bg" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80');"></div>
+        <div class="model-card-shade"></div>
+        <div class="model-card-body">
+          <p class="model-tag">04 — Co-Design</p>
+          <h3>Programmatic Partnerships</h3>
+          <p>Co-designed projects targeting youth, culture, creativity, or community development — aligned with your organisation's mandate and ISONGA's mission.</p>
+          <div class="model-perks">
+            <span class="model-perk">Custom Programs</span>
+            <span class="model-perk">Shared Beneficiaries</span>
+            <span class="model-perk">Joint Facilitation</span>
+            <span class="model-perk">Community Focus</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     WHO WE WELCOME
+══════════════════════════════════════ -->
+<section class="welcome-sec">
+  <div class="wrap">
+    <div class="welcome-band">
+      <p class="eyebrow">Open to All</p>
+      <h2>Who We <em>Welcome</em> as Partners</h2>
+      <p>We believe great partnerships can come from anywhere. Whether you are a global institution or a local business, if you care about youth and creativity, there is a place for you at ISONGA.</p>
+
+      <div class="welcome-grid">
+        <div class="welcome-card">
+          <span class="wc-icon">🏛️</span>
+          <h3>Cultural Institutions</h3>
+          <p>Museums, galleries, theatres, and heritage organisations seeking community engagement.</p>
+        </div>
+        <div class="welcome-card">
+          <span class="wc-icon">💼</span>
+          <h3>Private Sector Companies</h3>
+          <p>Businesses looking for meaningful CSR programs with measurable community impact.</p>
+        </div>
+        <div class="welcome-card">
+          <span class="wc-icon">🌍</span>
+          <h3>International NGOs</h3>
+          <p>Organisations working in youth development, livelihoods, gender, or creative economies.</p>
+        </div>
+        <div class="welcome-card">
+          <span class="wc-icon">🎗</span>
+          <h3>Donors &amp; Foundations</h3>
+          <p>Philanthropic organisations seeking high-impact, values-aligned projects in Rwanda.</p>
+        </div>
+        <div class="welcome-card">
+          <span class="wc-icon">🏛</span>
+          <h3>Government Agencies</h3>
+          <p>Ministries and local government bodies aligned with Rwanda's creative economy agenda.</p>
+        </div>
+        <div class="welcome-card">
+          <span class="wc-icon">🎓</span>
+          <h3>Universities &amp; Schools</h3>
+          <p>Academic institutions interested in creative education, internships, and community outreach.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     PARTNERSHIP PROCESS
+══════════════════════════════════════ -->
+<section class="process-sec">
+  <div class="wrap">
+    <div class="proc-head">
+      <p class="eyebrow light">Getting Started</p>
+      <h2>How <em>Partnership</em><br>Comes to Life</h2>
+      <p>From first conversation to active collaboration, our process is designed to be simple, clear, and built around shared goals.</p>
+    </div>
+
+    <div class="proc-steps">
+      <div class="p-step">
+        <div class="p-num">1</div>
+        <h3>Get in Touch</h3>
+        <p>Reach out via our contact form or email to introduce your organisation and interest.</p>
+      </div>
+      <div class="p-step">
+        <div class="p-num">2</div>
+        <h3>Discovery Meeting</h3>
+        <p>We meet to understand your goals, mandate, and the impact you want to create.</p>
+      </div>
+      <div class="p-step">
+        <div class="p-num">3</div>
+        <h3>Proposal &amp; Agreement</h3>
+        <p>We co-develop a partnership proposal and formalise the arrangement with a clear agreement.</p>
+      </div>
+      <div class="p-step">
+        <div class="p-num">4</div>
+        <h3>Activate &amp; Impact</h3>
+        <p>We launch together, deliver the program or activity, and share results with full transparency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════ -->
+<section class="cta-band">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Ready to Build<br><em>Something Together?</em></h2>
+        <p>Whether you have a clear partnership in mind or just want to explore possibilities, we welcome the conversation. Every great collaboration starts with a single message.</p>
+        <br>
+        <p style="color:rgba(255,255,255,0.38); font-size:0.82rem;">ISONGA CENTRE is a flagship initiative of TOP5SAI Group Ltd, Musanze, Rwanda.</p>
+      </div>
+      <div class="cta-card">
+        <a class="btn btn-white" href="{% url 'contact' %}">Contact Us to Partner</a>
+        <a class="btn btn-ghost" href="{% url 'about' %}">Learn About ISONGA</a>
+        <p>We typically respond within 2 business days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,246 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}About | ISONGA CENTRE{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'core/css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-photo"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-arc"></div>
+
+  <div class="page-hero-inner wrap">
+    <div class="page-hero-breadcrumb">
+      <a href="{% url 'home' %}">Home</a>
+      <span class="sep">›</span>
+      <span class="active">About</span>
+    </div>
+    <h1>About <em>ISONGA CENTRE</em></h1>
+    <p>A flagship initiative of TOP5SAI Ltd — a hybrid creative, cultural, and youth empowerment hub rooted in Musanze, Rwanda, built to turn potential into progress.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     WHO WE ARE
+══════════════════════════════════════ -->
+<section class="who-section">
+  <div class="wrap">
+    <div class="who-grid">
+      <div class="who-text">
+        <p class="eyebrow">Our Story</p>
+        <h2>Who We <em>Are</em></h2>
+        <p>ISONGA CENTRE exists to provide young people and emerging creatives with access to training, mentorship, production support, and performance opportunities in a professional, inspiring, and community-driven environment.</p>
+        <p>We are more than a venue — we are a movement. A place where Rwanda's next generation of artists, entrepreneurs, and innovators come to find their voice, sharpen their craft, and step into their future.</p>
+        <p>Based in Musanze, we draw on the full expertise and infrastructure of the TOP5SAI to deliver world-class programs at the local level — accessible to all.</p>
+        <div style="display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;">
+          <a class="btn btn-solid" href="{% url 'programs' %}">Explore Programs</a>
+          <a class="btn btn-outline" href="{% url 'partnerships' %}">Partner With Us</a>
+        </div>
+      </div>
+
+      <div style="position:relative;">
+        <div class="who-image">
+          <img
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80"
+            alt="Young creatives working together at Isonga Centre"
+            loading="lazy"
+          />
+        </div>
+        <div class="who-accent">
+          <strong>500+</strong>
+          <span>Youth Annually</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     VISION & MISSION
+══════════════════════════════════════ -->
+<section class="vm-section">
+  <div class="wrap">
+    <div class="vm-grid">
+
+      <div class="vm-card vision">
+        <div class="vm-icon">🔭</div>
+        <p class="vm-label">Our Vision</p>
+        <h2>Rwanda's Leading Creative &amp; Cultural Hub</h2>
+        <p>To become Rwanda's leading creative and cultural hub where youth talent is discovered, nurtured, and transformed into sustainable careers — driving innovation, cultural expression, and economic growth for generations to come.</p>
+      </div>
+
+      <div class="vm-card mission">
+        <div class="vm-icon">🎯</div>
+        <p class="vm-label">Our Mission</p>
+        <h2>Empowering Youth Through Creativity</h2>
+        <p>To empower youth and creatives through skills development, talent incubation, and dynamic cultural programming — by leveraging TOP5SAI's expertise, infrastructure, and industry networks to create opportunities, inspire creativity, and build sustainable career pathways.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CORE VALUES
+══════════════════════════════════════ -->
+<section class="values-section">
+  <div class="wrap">
+    <div class="values-head">
+      <p class="eyebrow">What Drives Us</p>
+      <h2>Our Core <em>Values</em></h2>
+      <p>Everything we do — every program, performance, and partnership — is guided by six principles that define who we are and how we operate.</p>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">💡</div>
+        <h3>Creativity &amp; Innovation</h3>
+        <p>We encourage bold thinking, artistic expression, and new ideas that push boundaries and open doors.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">⭐</div>
+        <h3>Excellence &amp; Professionalism</h3>
+        <p>We strive for quality in every program, production, and experience — setting the standard for creative education in Rwanda.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h3>Empowerment &amp; Inclusion</h3>
+        <p>We create opportunities for youth, women, and underserved groups — ensuring no talented person is left behind.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">🛡️</div>
+        <h3>Integrity &amp; Accountability</h3>
+        <p>We value trust, transparency, and responsible leadership in everything from finances to community relations.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">🌐</div>
+        <h3>Collaboration &amp; Partnership</h3>
+        <p>We believe impact grows through meaningful partnerships — with organisations, mentors, sponsors, and communities.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">🇷🇼</div>
+        <h3>Cultural Identity &amp; Heritage</h3>
+        <p>We celebrate Rwandan culture while welcoming creative exchange — rooting our work in pride, identity, and belonging.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     OUR LINK TO TOP5SAI
+══════════════════════════════════════ -->
+<section class="top5sai-section">
+  <div class="wrap">
+    <div class="top5sai-band">
+      <div class="top5sai-content">
+        <p class="eyebrow">Our Parent Organisation</p>
+        <h2>Powered by the <em>TOP5SAI</em></h2>
+        <p>ISONGA CENTRE is part of the broader TOP5SAI ecosystem, benefiting from the group's deep expertise, established infrastructure, and wide-ranging industry networks.</p>
+        <div class="top5sai-services">
+          <span class="service-pill">🎬 Events</span>
+          <span class="service-pill">🎥 Audiovisual Production</span>
+          <span class="service-pill">📻 Broadcasting</span>
+          <span class="service-pill">🎭 Entertainment</span>
+          <span class="service-pill">✨ Creative Services</span>
+          <span class="service-pill">🎵 Music</span>
+        </div>
+        <a class="btn btn-solid" href="#">Learn About TOP5SAI →</a>
+      </div>
+      <div class="top5sai-photo">
+        <img
+          src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80"
+          alt="TOP5SAI Group creative production"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     TEAM TEASER
+══════════════════════════════════════ -->
+<!-- <section class="team-section">
+  <div class="wrap">
+    <div class="team-head">
+      <p class="eyebrow">The People</p>
+      <h2>Meet the <em>Team</em></h2>
+      <p>ISONGA CENTRE is led by passionate professionals who believe in the power of creativity, community, and young people.</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80" alt="Centre Director" loading="lazy">
+        </div>
+        <div class="team-body">
+          <h3>Amara Nzeyimana</h3>
+          <span class="team-role">Centre Director</span>
+          <p>Creative strategist with 10+ years in youth development and cultural programming across East Africa.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Head of Programs" loading="lazy">
+        </div>
+        <div class="team-body">
+          <h3>Jean-Claude Habimana</h3>
+          <span class="team-role">Head of Programs</span>
+          <p>Education specialist passionate about equipping youth with skills for the creative economy of tomorrow.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=600&q=80" alt="Talent & Culture Lead" loading="lazy">
+        </div>
+        <div class="team-body">
+          <h3>Claudine Uwimana</h3>
+          <span class="team-role">Talent & Culture Lead</span>
+          <p>Performing arts director and talent scout with a track record of launching successful creative careers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- ══════════════════════════════════════
+     BOTTOM CTA
+══════════════════════════════════════ -->
+<section class="about-cta">
+  <div class="wrap">
+    <div class="about-cta-inner">
+      <div class="about-cta-text">
+        <h2>Ready to Be Part of the Story?</h2>
+        <p>Whether you are a young creative, a partner organisation, or a supporter of Rwanda's cultural future — there is a place for you at ISONGA CENTRE.</p>
+      </div>
+      <div class="about-cta-btns">
+        <a class="btn btn-white-solid" href="{% url 'programs' %}">Join a Program</a>
+        <a class="btn btn-ghost" href="{% url 'partnerships' %}">Partner With Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
