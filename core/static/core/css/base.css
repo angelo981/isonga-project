@@ -90,6 +90,33 @@ a { color: var(--primary); text-decoration: none; }
   }
   .footer-brand .nav-logo { font-size: 1.2rem; display: block; margin-bottom: 14px; }
   .footer-brand p { font-size: 0.845rem; line-height: 1.75; max-width: 260px; }
+  .social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(74, 144, 196, 0.12);
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(74, 144, 196, 0.25);
+  }
+  .social-links a:hover {
+    background: rgba(74, 144, 196, 0.3);
+    color: #4A90C4;
+    border-color: rgba(74, 144, 196, 0.5);
+    transform: translateY(-2px);
+  }
+  .social-links svg {
+    width: 20px;
+    height: 20px;
+  }
   .footer-col h4 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 16px; }
   .footer-col a { display: block; font-size: 0.845rem; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 9px; transition: color 0.2s; }
   .footer-col a:hover { color: var(--sky); }

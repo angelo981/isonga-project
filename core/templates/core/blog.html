@@ -1,297 +1,349 @@
 {% extends 'core/base.html' %}
-{%load static%}
+{% load static %}
 {% block title %}Blog | ISONGA CENTRE{% endblock %}
 
 {% block extra_css %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'core/css/blog.css' %}">
+<style>
+  :root {
+    --sky:      #4A90C4;
+    --sky-lt:   #EBF4FB;
+    --sky-pale: #F4F9FD;
+    --sky-mid:  #2970A2;
+    --sky-dk:   #1A4F78;
+    --white:    #FFFFFF;
+    --cream:    #FAFAF8;
+    --ink:      #1C1C1A;
+    --muted:    #6B6A66;
+    --border:   #E4EEF7;
+    --gold:     #D4A853;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans:  'Inter', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); background: var(--cream); color: var(--ink); line-height: 1.6; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+
+  /* ── HERO SECTION ── */
+  .blog-hero {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--sky-dk) 0%, var(--sky-mid) 100%);
+    padding-top: 68px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(26,79,120,0.8) 0%, rgba(41,112,162,0.6) 100%);
+  }
+
+  .hero-arc {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: var(--cream);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    padding: 60px 40px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-inner h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .hero-inner h1 em {
+    font-style: italic;
+    color: #a8cce8;
+  }
+
+  .hero-inner p {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ── LATEST POSTS SECTION ── */
+  .latest-posts {
+    padding: 80px 0;
+    background: var(--cream);
+  }
+
+  .latest-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .latest-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .latest-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .latest-header h2 em {
+    font-style: italic;
+    color: var(--sky);
+  }
+
+  .latest-header p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+  }
+
+  .post-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  }
+
+  .post-image {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background: var(--border);
+  }
+
+  .post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .post-card:hover .post-image img {
+    transform: scale(1.05);
+  }
+
+  .post-body {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 12px;
+  }
+
+  .post-title {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  .post-excerpt {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .post-date {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .post-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--sky);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .post-link:hover {
+    color: var(--sky-dk);
+  }
+
+  /* ── VIEW ALL BUTTON ── */
+  .view-all-section {
+    text-align: center;
+    padding: 60px 0;
+    background: var(--white);
+  }
+
+  .view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: var(--sky);
+    color: #fff;
+    border-radius: 100px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .view-all-btn:hover {
+    background: var(--sky-mid);
+    transform: translateY(-2px);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .wrap { padding: 0 20px; }
+    .hero-inner { padding: 40px 20px; }
+    .hero-inner h1 { font-size: 2.5rem; }
+    .latest-wrap { padding: 0 20px; }
+    .posts-grid { grid-template-columns: 1fr; gap: 30px; }
+    .post-body { padding: 20px; }
+  }
+</style>
 {% endblock %}
 
 {% block content %}
 
 <!-- ══════════════════════════════════════
-     PAGE HERO
+     HERO SECTION
 ══════════════════════════════════════ -->
-<section class="page-hero">
-  <div class="hero-photo"></div>
-  <div class="hero-overlay"></div>
+<section class="blog-hero">
+  <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1400&q=80');"></div>
   <div class="hero-arc"></div>
 
   <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-bread">
-        <a href="{% url 'home' %}">Home</a>
-        <span class="sep">›</span>
-        <span class="cur">Blog</span>
-      </div>
-      <h1>The ISONGA<br><em>Blog</em></h1>
-      <p class="hero-desc">Stories, reflections, insights, and announcements written by the ISONGA team — exploring youth creativity, cultural life, and community growth in Musanze and beyond.</p>
-      <div class="hero-topics">
-        <span class="htopic">🎯 Youth</span>
-        <span class="htopic">🎭 Culture</span>
-        <span class="htopic">🌍 Community</span>
-        <span class="htopic">⭐ Talent</span>
-        <span class="htopic">💡 Insights</span>
-        <span class="htopic">📅 Events</span>
-      </div>
-    </div>
-
-    <!-- Featured post preview -->
-    <div class="hero-post">
-      <div class="hp-thumb">
-        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&q=80" alt="Featured blog post" loading="lazy">
-        <span class="hp-thumb-badge">✍️ Latest Post</span>
-      </div>
-      <div class="hp-body">
-        <p class="hp-cat">Youth Development</p>
-        <h3>Why Creative Spaces Matter for Youth Development</h3>
-        <div class="hp-meta">
-          <span>📅 May 2025</span>
-          <span>·</span>
-          <span>⏱ 5 min read</span>
-          <span>·</span>
-          <span>✍️ ISONGA Team</span>
-        </div>
-        <a class="hp-read" href="#">Read the article</a>
-      </div>
-    </div>
+    <h1>The ISONGA<br><em>Blog</em></h1>
+    <p>Stories, reflections, insights, and announcements written by the ISONGA team — exploring youth creativity, cultural life, and community growth in Musanze and beyond.</p>
   </div>
 </section>
 
-
 <!-- ══════════════════════════════════════
-     BLOG STATS
+     LATEST POSTS
 ══════════════════════════════════════ -->
-<div class="stats-bar">
-  <div class="wrap">
-    <div class="stats-inner">
-      <div class="s-stat"><strong>18+</strong><span>Blog Posts</span></div>
-      <div class="s-stat"><strong>6</strong><span>Topic Categories</span></div>
-      <div class="s-stat"><strong>Monthly</strong><span>New Articles</span></div>
-      <div class="s-stat"><strong>100%</strong><span>Written by the Team</span></div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════
-     FILTER BAR
-══════════════════════════════════════ -->
-<div class="filter-bar">
-  <div class="wrap">
-    <div class="filter-inner">
-      <a href="#" class="f-chip active">All Posts</a>
-      <a href="#" class="f-chip">🎯 Youth</a>
-      <a href="#" class="f-chip">🎭 Culture</a>
-      <a href="#" class="f-chip">🌍 Community</a>
-      <a href="#" class="f-chip">⭐ Talent</a>
-      <a href="#" class="f-chip">📅 Events</a>
-      <a href="#" class="f-chip">📢 Announcements</a>
-      <a href="#" class="f-chip">💡 Insights</a>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════
-     FEATURED BLOG POST
-══════════════════════════════════════ -->
-<section class="featured-sec">
-  <div class="wrap">
-    <div class="featured-card">
-      <div class="fc-photo">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80" alt="Why Creative Spaces Matter" loading="lazy">
-        <div class="fc-photo-overlay"></div>
-        <span class="fc-badge">📌 Editor's Pick</span>
-        <div class="fc-author-bar">
-          <div class="fc-author-avatar">
-            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=80&q=80" alt="Author" loading="lazy">
-          </div>
-          <div>
-            <p class="fc-author-name">ISONGA Editorial Team</p>
-            <p class="fc-author-role">Written from the Centre</p>
-          </div>
-        </div>
-      </div>
-      <div class="fc-body">
-        <p class="fc-cat">Youth Development</p>
-        <h2>Why Creative Spaces Matter for Youth Development</h2>
-        <p>Creative hubs do more than teach skills — they build confidence, discipline, belonging, and clear pathways to real opportunity. At ISONGA, we see this transformation every day, and the evidence is impossible to ignore.</p>
-        <div class="fc-meta">
-          <span class="fc-meta-item">📅 May 10, 2025</span>
-          <span class="fc-meta-item">⏱ 5 min read</span>
-          <span class="fc-meta-item">💬 4 comments</span>
-        </div>
-        <div class="fc-tags">
-          <span class="fc-tag">Youth</span>
-          <span class="fc-tag">Creative Space</span>
-          <span class="fc-tag">Empowerment</span>
-          <span class="fc-tag">Rwanda</span>
-        </div>
-        <a class="read-more" href="{% url 'blog_detail' posts.0.slug %}">Read Full Article</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════
-     BLOG POSTS GRID
-══════════════════════════════════════ -->
-<section class="posts-sec">
-  <div class="wrap">
-    <div class="sec-head-row">
-      <div>
-        <p class="eyebrow">From the Blog</p>
-        <h2>Latest <em>Articles</em></h2>
-      </div>
-      <a class="view-all" href="#">All Articles</a>
+<section class="latest-posts">
+  <div class="latest-wrap">
+    <div class="latest-header">
+      <h2>{% if show_all %}All{% else %}Latest{% endif %} <em>Articles</em></h2>
+      <p>{% if show_all %}Browse every published story and insight from the ISONGA community.{% else %}Stay updated with our most recent stories and insights from the ISONGA community.{% endif %}</p>
     </div>
 
     <div class="posts-grid">
-      {% for post in posts %}
-      <article class="post-card">
-        <div class="pc-thumb">
-          <img src="{{ post.thumb_image }}" alt="{{ post.title }}" loading="lazy">
-          <span class="pc-read-time">⏱ {{ post.read_time }} min</span>
-          <span class="pc-cat">{{ post.category }}</span>
+      {% for post in page_obj %}
+      <a class="post-card" href="{% url 'blog_detail' post.slug %}">
+        <div class="post-image">
+          {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" loading="lazy">
+          {% else %}
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80" alt="{{ post.title }}" loading="lazy">
+          {% endif %}
         </div>
-        <div class="pc-body">
-          <h3>{{ post.title }}</h3>
-          <p>{{ post.excerpt }}</p>
-          <div class="pc-footer">
-            <div class="pc-author">
-              <div class="pc-avatar"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=60&q=70" alt="" loading="lazy"></div>
-              <div class="pc-author-info"><strong>{{ post.author_name }}</strong>{{ post.published_date }}</div>
-            </div>
-            <a class="pc-link" href="{% url 'blog_detail' post.slug %}">Read</a>
+        <div class="post-body">
+          <p class="post-category">{{ post.category|default:"Blog" }}</p>
+          <h3 class="post-title">{{ post.title }}</h3>
+          <p class="post-subtitle">{{ post.sub_content|truncatewords:20 }}</p>
+          <p class="post-excerpt">{{ post.content|truncatewords:20 }}</p>
+          <div class="post-meta">
+            <span class="post-date">{{ post.created_at|date:"M d, Y" }}</span>
+            <span class="post-link">Read More</span>
           </div>
         </div>
-      </article>
+      </a>
+      {% empty %}
+      <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+        <p style="font-size: 1.1rem; color: var(--muted);">No blog posts available yet. Check back soon for new content!</p>
+      </div>
       {% endfor %}
     </div>
   </div>
 </section>
 
-
 <!-- ══════════════════════════════════════
-     SIDEBAR LAYOUT — TAGS + RECENT + NEWSLETTER
-══════════════════════════════════════ -->
-<section class="blog-layout">
+     VIEW ALL BUTTON
+══════════════════════════════ -->
+{% if not show_all and has_more_posts %}
+<section class="view-all-section">
   <div class="wrap">
-    <div class="blog-cols">
-
-      <!-- Left: more reading -->
-      <div>
-        <div class="sec-head-row" style="margin-bottom:36px;">
-          <div>
-            <p class="eyebrow">Keep Reading</p>
-            <h2>More <em>from the Blog</em></h2>
-          </div>
-        </div>
-        <div class="recent-posts">
-          <div class="rp-item">
-            <div class="rp-thumb"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=200&q=70" alt="" loading="lazy"></div>
-            <div class="rp-text">
-              <strong>Why Creative Spaces Matter for Youth Development</strong>
-              <span>May 10, 2025 &nbsp;·&nbsp; 5 min read &nbsp;·&nbsp; Youth Development</span>
-            </div>
-          </div>
-          <div class="rp-item">
-            <div class="rp-thumb"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=200&q=70" alt="" loading="lazy"></div>
-            <div class="rp-text">
-              <strong>Highlights from Our Latest Talent Showcase</strong>
-              <span>Apr 28, 2025 &nbsp;·&nbsp; 3 min read &nbsp;·&nbsp; Talent</span>
-            </div>
-          </div>
-          <div class="rp-item">
-            <div class="rp-thumb"><img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=200&q=70" alt="" loading="lazy"></div>
-            <div class="rp-text">
-              <strong>Building Musanze as a Creative and Cultural Destination</strong>
-              <span>Apr 14, 2025 &nbsp;·&nbsp; 6 min read &nbsp;·&nbsp; Culture</span>
-            </div>
-          </div>
-          <div class="rp-item">
-            <div class="rp-thumb"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=200&q=70" alt="" loading="lazy"></div>
-            <div class="rp-text">
-              <strong>Giving Young People a Stage Before the World Does</strong>
-              <span>Apr 5, 2025 &nbsp;·&nbsp; 4 min read &nbsp;·&nbsp; Youth</span>
-            </div>
-          </div>
-          <div class="rp-item">
-            <div class="rp-thumb"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&q=70" alt="" loading="lazy"></div>
-            <div class="rp-text">
-              <strong>Why Digital Skills Are Non-Negotiable for Creatives</strong>
-              <span>Mar 22, 2025 &nbsp;·&nbsp; 5 min read &nbsp;·&nbsp; Insights</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: sidebar widgets -->
-      <div class="sidebar">
-
-        <!-- Newsletter widget -->
-        <div class="sidebar-widget">
-          <h3 class="sw-title">Get the Blog<br><em>in Your Inbox</em></h3>
-          <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;margin-bottom:16px;">One email per month. No spam. Unsubscribe any time.</p>
-          <input class="nl-widget-input" type="text" placeholder="Your name">
-          <input class="nl-widget-input" type="email" placeholder="Your email address">
-          <button class="nl-sub-btn">Subscribe to the Blog →</button>
-          <p class="nl-widget-note">🔒 Your details are never shared.</p>
-        </div>
-
-        <!-- Topics widget -->
-        <div class="sidebar-widget">
-          <h3 class="sw-title">Browse <em>Topics</em></h3>
-          <div class="tag-cloud">
-            <span class="tag hot">🎯 Youth</span>
-            <span class="tag hot">🎭 Culture</span>
-            <span class="tag">🎵 Music</span>
-            <span class="tag">💃 Dance</span>
-            <span class="tag hot">🌍 Community</span>
-            <span class="tag">😂 Comedy</span>
-            <span class="tag">📻 Media</span>
-            <span class="tag">💼 Entrepreneurship</span>
-            <span class="tag hot">⭐ Talent</span>
-            <span class="tag">🎓 Skills</span>
-            <span class="tag">📅 Events</span>
-            <span class="tag">🤝 Partnerships</span>
-            <span class="tag">💡 Insights</span>
-            <span class="tag">🖼 Art</span>
-          </div>
-        </div>
-
-        <!-- About the blog widget -->
-        <div class="sidebar-widget" style="background:var(--sky-dk); border-color:transparent;">
-          <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.42);margin-bottom:10px;">About this Blog</p>
-          <p style="font-size:0.875rem;color:rgba(255,255,255,0.72);line-height:1.72;margin-bottom:16px;">The ISONGA Blog is written by the team at ISONGA CENTRE — sharing stories of youth, culture, and creativity in Musanze, Rwanda.</p>
-          <a href="{% url 'about' %}" style="display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:700;color:#a8cce8;text-decoration:none;">Learn about ISONGA →</a>
-        </div>
-
-      </div>
-    </div>
+    <a class="view-all-btn" href="{% url 'blog_all' %}">
+      View All Articles
+      <span>→</span>
+    </a>
   </div>
 </section>
-
-
-<!-- ══════════════════════════════════════
-     CTA BAND
-══════════════════════════════════════ -->
-<section class="cta-band">
+{% elif show_all %}
+<section class="view-all-section">
   <div class="wrap">
-    <div class="cta-inner">
-      <div class="cta-text">
-        <h2>There's Always Something<br><em>Happening at ISONGA</em></h2>
-        <p>The blog is just one window into what we do. Join a program, attend an event, or reach out — the ISONGA story is still being written, and there is a place in it for you.</p>
-      </div>
-      <div class="cta-btns">
-        <a class="btn btn-white" href="{% url 'events' %}">Explore Events</a>
-        <a class="btn btn-ghost" href="{% url 'programs' %}">Join a Program</a>
-      </div>
-    </div>
+    <a class="view-all-btn" href="{% url 'blog' %}">
+      Back to Latest Articles
+      <span>→</span>
+    </a>
   </div>
 </section>
+{% endif %}
 
 {% endblock %}

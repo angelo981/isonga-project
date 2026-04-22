@@ -14,8 +14,7 @@
      PAGE HERO
 ══════════════════════════════════════ -->
 <section class="page-hero">
-  <div class="page-hero-photo"></div>
-  <div class="page-hero-overlay"></div>
+  <div class="page-hero-photo" style="background-image: url('{% static "img/about.jpeg" %}');"></div>
   <div class="page-hero-arc"></div>
 
   <div class="page-hero-inner wrap">
@@ -51,7 +50,7 @@
       <div style="position:relative;">
         <div class="who-image">
           <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80"
+            src="{% static 'img/who.jpeg' %}"
             alt="Young creatives working together at Isonga Centre"
             loading="lazy"
           />
@@ -162,11 +161,11 @@
           <span class="service-pill">✨ Creative Services</span>
           <span class="service-pill">🎵 Music</span>
         </div>
-        <a class="btn btn-solid" href="#">Learn About TOP5SAI →</a>
+        <a class="btn btn-solid" href="https://top5sai.com" target="_blank">Learn About TOP5SAI →</a>
       </div>
       <div class="top5sai-photo">
         <img
-          src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80"
+          src="{% static 'img/media.png' %}"
           alt="TOP5SAI Group creative production"
           loading="lazy"
         />

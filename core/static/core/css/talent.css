@@ -9,8 +9,8 @@
     --ink:      #1C1C1A;
     --muted:    #6B6A66;
     --border:   #E4EEF7;
-    --gold:     #D4A853;
-    --gold-lt:  #FBF4E6;
+    --gold:     #4A90C4;
+    --gold-lt:  #EBF4FB;
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans:  'Inter', system-ui, sans-serif;
   }
@@ -60,7 +60,6 @@
   }
   .hero-photo {
     position: absolute; inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=1800&q=80');
     background-size: cover; background-position: center 25%;
     opacity: 0.38;
   }
@@ -242,7 +241,7 @@
     background: rgba(255,255,255,0.04); border-radius: 50%;
   }
   .spotlight-photo { position: relative; overflow: hidden; }
-  .spotlight-photo img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.75; }
+  .spotlight-photo img { width: 100%; height: auto; object-fit: contain; display: block; opacity: 0.75; }
   .spotlight-photo::after {
     content: ''; position: absolute; inset: 0;
     background: linear-gradient(90deg, transparent 55%, var(--sky-dk) 100%);

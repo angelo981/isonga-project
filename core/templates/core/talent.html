@@ -17,8 +17,7 @@
      PAGE HERO
 ══════════════════════════════════════ -->
 <section class="page-hero">
-  <div class="hero-photo"></div>
-  <div class="hero-overlay"></div>
+  <div class="hero-photo" style="background-image: url('{% static "img/talent.jpeg" %}');"></div>
   <div class="hero-arc"></div>
 
   <div class="hero-inner">
@@ -41,16 +40,16 @@
 
     <!-- Floating quote -->
     <div class="hero-quote">
-      <span class="quote-mark">"</span>
+      <!-- <span class="quote-mark">"</span> -->
       <blockquote>ISONGA gave me more than skills — it gave me the stage to believe in myself.</blockquote>
       <div class="quote-author">
-        <div class="qa-avatar">
+        <!-- <div class="qa-avatar">
           <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80" alt="ISONGA talent" loading="lazy">
         </div> 
          <div>
            <p class="qa-name">Amara N.</p>
           <p class="qa-role">Singer-Songwriter · ISONGA 2024</p>
-        </div> 
+        </div>  -->
       </div>
     </div>
   </div>
@@ -84,64 +83,30 @@
     </div>
 
     <div class="talent-grid">
-
-      <!-- Talent 1 -->
-      <article class="talent-card">
-        <div class="tc-photo">
-          <img src="{% static 'img/pic8.jpg' %}" alt="Singer-songwriter talent" loading="lazy">
-          <div class="tc-photo-overlay"></div>
-          <span class="tc-discipline">🎵 Music</span>
-        </div>
-        <div class="tc-body">
-          <h3>Talent Name</h3>
-          <p>Singer-songwriter and ISONGA participant who developed performance confidence and recorded original work through the Centre's support system.</p>
-          <ul class="tc-milestones">
-            <li>Completed vocal coaching and studio recording sessions</li>
-            <li>Performed at two public showcase events</li>
-            <li>Released first original single with TOP5SAI support</li>
-          </ul>
-          <a class="tc-link" href="#">Read their story</a>
-        </div>
-      </article>
-
-      <!-- Talent 2 -->
-      <article class="talent-card">
-        <div class="tc-photo">
-          <img src="{% static 'img/pic7.jpg' %}" alt="Dancer talent" loading="lazy">
-          <div class="tc-photo-overlay"></div>
-          <span class="tc-discipline">💃 Dance</span>
-        </div>
-        <div class="tc-body">
-          <h3>Talent Name</h3>
-          <p>Dancer and performer building a stronger stage identity through rehearsals, showcases, and dedicated mentoring at the Centre.</p>
-          <ul class="tc-milestones">
-            <li>Completed cultural performance and choreography training</li>
-            <li>Led ensemble at the 2024 Youth Showcase Night</li>
-            <li>Invited to represent Musanze at a regional festival</li>
-          </ul>
-          <a class="tc-link" href="#">Read their story</a>
-        </div>
-      </article>
-
-      <!-- Talent 3 -->
-      <article class="talent-card">
-        <div class="tc-photo">
-          <img src="{% static 'img/pic2.jpg' %}" alt="Content creator talent" loading="lazy">
-          <div class="tc-photo-overlay"></div>
-          <span class="tc-discipline">📱 Digital</span>
-        </div>
-        <div class="tc-body">
-          <h3>Talent Name</h3>
-          <p>Emerging content creator exploring storytelling and digital production pathways through ISONGA's creative skills program.</p>
-          <ul class="tc-milestones">
-            <li>Completed digital &amp; creative skills training track</li>
-            <li>Produced first branded social media content series</li>
-            <li>Now working with a local business on content strategy</li>
-          </ul>
-          <a class="tc-link" href="#">Read their story</a>
-        </div>
-      </article>
-
+      {% if talents %}
+        {% for talent in talents %}
+          <article class="talent-card">
+            <div class="tc-photo">
+              {% if talent.image %}
+                <img src="{{ talent.image.url }}" alt="{{ talent.title }}" loading="lazy">
+              {% endif %}
+              <div class="tc-photo-overlay"></div>
+              <span class="tc-discipline">{{ talent.title }}</span>
+            </div>
+            <div class="tc-body">
+              <h3>{{ talent.title }}</h3>
+              <p>{{ talent.sub_content|default:talent.content|truncatewords:25 }}</p>
+              <ul class="tc-milestones">
+                <li>{{ talent.content|truncatewords:12 }}</li>
+                <li>Published {{ talent.created_at|date:"F j, Y" }}</li>
+              </ul>
+              <a class="tc-link" href="{% url 'talent_detail' talent.slug %}">View Detail</a>
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <p>No talent stories are available right now. Check back soon for updates from ISONGA participants.</p>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -154,7 +119,8 @@
   <div class="wrap">
     <div class="spotlight-band">
       <div class="spotlight-photo">
-        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80" alt="Talent on stage at ISONGA Centre" loading="lazy">
+        <img src="{% static 'img/power.jpeg' %}" alt="Talent on stage at ISONGA Centre" loading="lazy">
+        <img src="{% static 'img/who.jpeg' %}" alt="Talent on stage at ISONGA Centre" loading="lazy">
       </div>
       <div class="spotlight-body">
         <p class="eyebrow">Success Story</p>
@@ -283,7 +249,7 @@
         <span class="testi-qmark">"</span>
         <blockquote>Before ISONGA, I had the voice but not the courage. Now I perform for crowds and feel completely at home on stage.</blockquote>
         <div class="testi-author">
-          <div class="t-avatar"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80" alt="Participant" loading="lazy"></div>
+          <div class="t-avatar"><img src="{% static 'img/pic1.jpg' %}" alt="Participant" loading="lazy"></div>
           <div><p class="t-name">Participant, Music Program</p><p class="t-role">Musanze · 2024</p></div>
         </div>
       </div>
@@ -293,7 +259,7 @@
         <span class="testi-qmark">"</span>
         <blockquote>The mentors here actually care. They pushed me to be better every week, and I can see the difference in my work.</blockquote>
         <div class="testi-author">
-          <div class="t-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Participant" loading="lazy"></div>
+          <div class="t-avatar"><img src="{% static 'img/pic2.jpg' %}" alt="Participant" loading="lazy"></div>
           <div><p class="t-name">Participant, Digital Skills</p><p class="t-role">Musanze · 2024</p></div>
         </div>
       </div>
@@ -303,7 +269,7 @@
         <span class="testi-qmark">"</span>
         <blockquote>I came with a dream and left with a plan. ISONGA doesn't just train you — it connects you to real opportunities.</blockquote>
         <div class="testi-author">
-          <div class="t-avatar"><img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=100&q=80" alt="Participant" loading="lazy"></div>
+          <div class="t-avatar"><img src="{% static 'img/pic3.jpg' %}" alt="Participant" loading="lazy"></div>
           <div><p class="t-name">Participant, Talent Incubation</p><p class="t-role">Musanze · 2024</p></div>
         </div>
       </div>
@@ -330,7 +296,7 @@
         </ul>
       </div>
       <div class="apply-btns">
-        <a class="btn btn-white" href="{% url 'contact' %}">Apply for Audition</a>
+        <a class="btn btn-white" href="{% url 'apply' %}">Apply for Audition</a>
         <a class="btn btn-ghost" href="{% url 'programs' %}">Explore Programs</a>
       </div>
     </div>
@@ -341,7 +307,7 @@
 <!-- ══════════════════════════════════════
      BOTTOM CTA
 ══════════════════════════════════════ -->
-<section class="cta-band">
+<!-- <section class="cta-band">
   <div class="wrap">
     <div class="cta-inner">
       <div class="cta-text">
@@ -354,6 +320,6 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 {% endblock %}

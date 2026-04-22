@@ -1,0 +1,239 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}All Events | ISONGA CENTRE{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'core/css/events.css' %}">
+<style>
+  .event-tabbar {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin: 40px auto 24px;
+    max-width: 720px;
+    flex-wrap: wrap;
+  }
+
+  .event-tabbar .tab-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 170px;
+    padding: 14px 20px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: #fff;
+    color: var(--ink);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+
+  .event-tabbar .tab-btn.active {
+    background: var(--sky);
+    color: #fff;
+    border-color: var(--sky);
+  }
+
+  .event-tabbar .tab-btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
+<section class="ev-hero" style="min-height: 50vh; padding-top: 40px;">
+  <div class="ev-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1400&q=80');"></div>
+  <div class="ev-hero-overlay"></div>
+
+  <div class="ev-hero-inner" style="grid-template-columns: 1fr; gap: 0; align-items: center;">
+    <div class="ev-hero-left">
+      <div class="ev-bread">
+        <a href="{% url 'home' %}">Home</a>
+        <span class="sep">›</span>
+        <span class="cur">All Events</span>
+      </div>
+      <h1>All Events &amp;<br><em>Calendar</em></h1>
+      <p>Browse our complete calendar of upcoming and past events.</p>
+    </div>
+  </div>
+</section>
+
+<div class="filter-bar">
+  <div class="wrap">
+    <div class="filter-inner">
+      <div class="f-cat">
+        <span class="f-label">Category:</span>
+        <a href="?tab={{ active_tab }}{% if search_query %}&q={{ search_query|urlencode }}{% endif %}" class="f-chip {% if not selected_category %}active{% endif %}">All</a>
+        {% for category in categories %}
+          <a href="?category={{ category.name|urlencode }}&tab={{ active_tab }}{% if search_query %}&q={{ search_query|urlencode }}{% endif %}" class="f-chip {% if selected_category == category.name %}active{% endif %}">{{ category.name }}</a>
+        {% endfor %}
+      </div>
+      <form class="f-search" method="get" action="">
+        <input type="hidden" name="tab" value="{{ active_tab }}">
+        {% if selected_category %}
+          <input type="hidden" name="category" value="{{ selected_category }}">
+        {% endif %}
+        <input type="text" name="q" placeholder="Search events..." value="{{ search_query }}">
+        <button type="submit" class="btn btn-solid">Search</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="event-tabbar">
+  <button class="tab-btn {% if active_tab == 'upcoming' %}active{% endif %}" id="upcomingTab">Upcoming Events</button>
+  <button class="tab-btn {% if active_tab == 'past' %}active{% endif %}" id="pastTab">Past Events</button>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     UPCOMING EVENTS
+══════════════════════════════════════ -->
+<section class="upcoming-sec tab-panel {% if active_tab == 'upcoming' %}active{% endif %}" id="upcomingSection" style="{% if active_tab != 'upcoming' %}display:none;{% endif %}">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">On the Calendar</p>
+        <h2 class="sec-title">Upcoming <em>Events</em></h2>
+      </div>
+    </div>
+
+    <!-- GRID LAYOUT -->
+    <div class="upcoming-grid">
+      {% if upcoming_events %}
+        {% for event in upcoming_events %}
+          <div class="upcoming-card">
+            <div class="upcoming-img">
+              {% if event.image %}
+              <img src="{{ event.image.url }}" alt="{{ event.title_en }}" loading="lazy">
+              {% else %}
+              <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&q=80" alt="{{ event.title_en }}" loading="lazy">
+              {% endif %}
+              <div class="upcoming-img-overlay"></div>
+              <span class="upcoming-badge">Upcoming</span>
+            </div>
+            <div class="upcoming-body">
+              <div class="upcoming-top">
+                <span class="ev-cat">{{ event.category.name }}</span>
+                <span class="upcoming-date">{{ event.event_date|date:"M j, Y" }}</span>
+              </div>
+              <h4>{{ event.title_en }}</h4>
+              <p>{{ event.description_en|truncatewords:25 }}</p>
+              <div class="upcoming-stats">
+                <span>⏰ {{ event.event_date|time:"g:i A" }}</span>
+                <span>📍 {{ event.venue }}</span>
+              </div>
+              <a class="btn btn-solid" href="{% url 'events_detail' event.slug %}" style="margin-top: 12px; display: inline-block; padding: 10px 20px; background: #2a82c8; color: white; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600;">View Details</a>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-events">There are no upcoming events at the moment. Check back soon for new dates.</p>
+      {% endif %}
+    </div>
+
+    <div class="back-to-latest" style="text-align: center; margin: 40px 0;">
+      <a class="btn btn-outline-sky" href="{% url 'events' %}{% if selected_category %}?category={{ selected_category|urlencode }}{% endif %}">Back to Latest Events</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     PAST EVENTS
+══════════════════════════════════════ -->
+<section class="past-sec tab-panel {% if active_tab == 'past' %}active{% endif %}" id="pastSection" style="{% if active_tab != 'past' %}display:none;{% endif %}">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow past-eyebrow">Look Back</p>
+        <h2 class="sec-title">Past <em>Events</em></h2>
+        <p class="sec-sub" style="margin-top:6px;">A look at what we've already created together — memories, milestones, and moments worth revisiting.</p>
+      </div>
+    </div>
+
+    <div class="past-grid">
+      {% if past_events %}
+        {% for event in past_events %}
+          <div class="past-card">
+            <div class="past-img">
+              {% if event.image %}
+              <img src="{{ event.image.url }}" alt="{{ event.title_en }}" loading="lazy">
+              {% else %}
+              <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&q=80" alt="{{ event.title_en }}" loading="lazy">
+              {% endif %}
+              <div class="past-img-overlay"></div>
+              <span class="past-done-badge">✓ Done</span>
+            </div>
+            <div class="past-body">
+              <div class="past-top">
+                <span class="ev-cat">{{ event.category.name }}</span>
+                <span class="past-date">{{ event.event_date|date:"M j, Y" }}</span>
+              </div>
+              <h4>{{ event.title_en }}</h4>
+              <p>{{ event.description_en|truncatewords:25 }}</p>
+              <div class="past-stats">
+                <span>📍 {{ event.venue }}</span>
+              </div>
+              <a class="btn btn-solid" href="{% url 'events_detail' event.slug %}" style="margin-top: 12px; display: inline-block; padding: 10px 20px; background: #4A90C4; color: white; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600;">View Details</a>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-events">No past events are available yet.</p>
+      {% endif %}
+    </div>
+
+    <div class="back-to-latest" style="text-align: center; margin: 40px 0;">
+      <a class="btn btn-outline-sky" href="{% url 'events' %}{% if selected_category %}?category={{ selected_category|urlencode }}{% endif %}">Back to Latest Events</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const upcomingTab = document.getElementById('upcomingTab');
+    const pastTab = document.getElementById('pastTab');
+    const upcomingSection = document.getElementById('upcomingSection');
+    const pastSection = document.getElementById('pastSection');
+
+    function activateTab(tab) {
+      if (tab === 'upcoming') {
+        upcomingSection.style.display = 'block';
+        pastSection.style.display = 'none';
+        upcomingTab.classList.add('active');
+        pastTab.classList.remove('active');
+      } else {
+        upcomingSection.style.display = 'none';
+        pastSection.style.display = 'block';
+        upcomingTab.classList.remove('active');
+        pastTab.classList.add('active');
+      }
+    }
+
+    upcomingTab.addEventListener('click', function (event) {
+      event.preventDefault();
+      activateTab('upcoming');
+    });
+
+    pastTab.addEventListener('click', function (event) {
+      event.preventDefault();
+      activateTab('past');
+    });
+  });
+</script>
+
+{% endblock %}

@@ -26,7 +26,6 @@
     <div class="hbg-cell"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=70" alt=""></div>
     <div class="hbg-cell"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=70" alt=""></div>
   </div>
-  <div class="hero-overlay"></div>
   <div class="hero-overlay-bottom"></div>
 
   <div class="hero-inner">
@@ -58,14 +57,18 @@
 <div class="filter-bar">
   <div class="wrap">
     <div class="filter-inner">
-      <a href="#" class="f-chip active">All Media</a>
-      <a href="#" class="f-chip">📸 Events</a>
-      <a href="#" class="f-chip">🎓 Workshops</a>
-      <a href="#" class="f-chip">🌟 Showcases</a>
-      <a href="#" class="f-chip">🎤 Performances</a>
-      <a href="#" class="f-chip">🎬 Behind the Scenes</a>
-      <a href="#" class="f-chip">🤝 Community</a>
-      <a href="#" class="f-chip">▶ Videos</a>
+      <div class="f-cat">
+        <span class="f-label">Filter by category:</span>
+        <a href="?{% if search_query %}q={{ search_query|urlencode }}{% endif %}" class="f-chip {% if not selected_category %}active{% endif %}">All</a>
+        {% for category in categories %}
+          <a href="?category={{ category.name|urlencode }}{% if search_query %}&q={{ search_query|urlencode }}{% endif %}" class="f-chip {% if selected_category == category.name %}active{% endif %}">{{ category.name }}</a>
+        {% endfor %}
+      </div>
+      <form class="f-search" method="get" action="">
+        {% if selected_category %}
+          <input type="hidden" name="category" value="{{ selected_category }}">
+        {% endif %}
+      </form>
     </div>
   </div>
 </div>
@@ -98,132 +101,17 @@
     </div>
 
     <div class="masonry">
-      <a class="m-item lightbox-trigger" href="#">
-        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Live performance" loading="lazy">
-        <div class="m-overlay"><div class="m-label"><span class="m-cat-dot"></span>Acoustic Sessions</div></div>
-        <div class="m-zoom">⊕</div>
-      </a>
-      <a class="m-item lightbox-trigger" href="#">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="Workshop" loading="lazy" style="aspect-ratio:4/3;object-fit:cover;">
-        <div class="m-overlay"><div class="m-label"><span class="m-cat-dot"></span>Digital Workshop</div></div>
-        <div class="m-zoom">⊕</div>
-      </a>
-      <a class="m-item lightbox-trigger" href="#">
-        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80" alt="Community event" loading="lazy">
-        <div class="m-overlay"><div class="m-label"><span class="m-cat-dot"></span>Community Night</div></div>
-        <div class="m-zoom">⊕</div>
-      </a>
-      <a class="m-item lightbox-trigger" href="#">
-        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&q=80" alt="Youth showcase" loading="lazy">
-        <div class="m-overlay"><div class="m-label"><span class="m-cat-dot"></span>Youth Showcase</div></div>
-        <div class="m-zoom">⊕</div>
-      </a>
-      <a class="m-item lightbox-trigger" href="#">
-        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="Workshop session" loading="lazy">
-        <div class="m-overlay"><div class="m-label"><span class="m-cat-dot"></span>Skills Training</div></div>
-        <div class="m-zoom">⊕</div>
-      </a>
-      <a class="m-item lightbox-trigger" href="#">
-        <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=600&q=80" alt="Event crowd" loading="lazy">
-        <div class="m-overlay"><div class="m-label"><span class="m-cat-dot"></span>Live Event</div></div>
-        <div class="m-zoom">⊕</div>
-      </a>
-      <a class="m-item lightbox-trigger" href="#">
-        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&q=80" alt="Movie night" loading="lazy">
-        <div class="m-overlay"><div class="m-label"><span class="m-cat-dot"></span>Movie Night</div></div>
-        <div class="m-zoom">⊕</div>
-      </a>
-      <a class="m-item lightbox-trigger" href="#">
-        <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=600&q=80" alt="Group session" loading="lazy">
-        <div class="m-overlay"><div class="m-label"><span class="m-cat-dot"></span>Behind the Scenes</div></div>
-        <div class="m-zoom">⊕</div>
-      </a>
-      <a class="m-item lightbox-trigger" href="#">
-        <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&q=80" alt="Exhibition" loading="lazy">
-        <div class="m-overlay"><div class="m-label"><span class="m-cat-dot"></span>Exhibition</div></div>
-        <div class="m-zoom">⊕</div>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════
-     CATEGORY CARDS
-══════════════════════════════════════ -->
-<section class="categories-sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow light">Browse by Theme</p>
-      <h2>Six Media <em>Collections</em></h2>
-    </div>
-
-    <div class="cat-grid">
-      <div class="cat-card">
-        <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=700&q=80');"></div>
-        <div class="cat-shade"></div>
-        <div class="cat-body">
-          <div class="cat-icon-wrap">📸</div>
-          <h3>Events</h3>
-          <p>Concerts, showcases, and community experiences captured in full.</p>
-          <span class="cat-count">🖼 View Collection →</span>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&q=80');"></div>
-        <div class="cat-shade"></div>
-        <div class="cat-body">
-          <div class="cat-icon-wrap">🎓</div>
-          <h3>Workshops</h3>
-          <p>Hands-on learning moments and participant engagement in action.</p>
-          <span class="cat-count">🖼 View Collection →</span>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=700&q=80');"></div>
-        <div class="cat-shade"></div>
-        <div class="cat-body">
-          <div class="cat-icon-wrap">🌟</div>
-          <h3>Talent Showcases</h3>
-          <p>Stage moments that celebrate the emerging creative voices of Rwanda.</p>
-          <span class="cat-count">🖼 View Collection →</span>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <div class="cat-bg" style="background-image:url('{% static 'img/pic1.jpg' %}')"></div>
-        <div class="cat-shade"></div>
-        <div class="cat-body">
-          <div class="cat-icon-wrap">🎤</div>
-          <h3>Performances</h3>
-          <p>Music, comedy, dance, and live creative expression in every form.</p>
-          <span class="cat-count">🖼 View Collection →</span>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1529390079861-591de354faf5?w=700&q=80');"></div>
-        <div class="cat-shade"></div>
-        <div class="cat-body">
-          <div class="cat-icon-wrap">🎬</div>
-          <h3>Behind the Scenes</h3>
-          <p>Production, preparation, and the creative process that makes it all happen.</p>
-          <span class="cat-count">🖼 View Collection →</span>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=700&q=80');"></div>
-        <div class="cat-shade"></div>
-        <div class="cat-body">
-          <div class="cat-icon-wrap">🤝</div>
-          <h3>Community Moments</h3>
-          <p>Connection, participation, and the vibrant local cultural energy of Musanze.</p>
-          <span class="cat-count">🖼 View Collection →</span>
-        </div>
-      </div>
+      {% if photos %}
+        {% for item in photos %}
+          <a class="m-item lightbox-trigger" href="{{ item.image.url }}">
+            <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+            <div class="m-overlay"><div class="m-label"><span class="m-cat-dot"></span>{{ item.title }}</div></div>
+            <div class="m-zoom">⊕</div>
+          </a>
+        {% endfor %}
+      {% else %}
+        <p>No gallery photos are available at the moment. Please check back soon.</p>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -241,59 +129,54 @@
         <p>From live performances and workshop recaps to short documentary features on our participants — our video library brings the energy of ISONGA to life.</p>
 
         <div class="video-playlist">
-          <div class="vp-item">
-            <div class="vp-thumb">
-              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=200&q=70" alt="">
-              <div class="vp-play-overlay">▶</div>
-            </div>
-            <div class="vp-meta">
-              <strong>Acoustic Sessions — April 2025 Highlights</strong>
-              <span>Showcase · 4:32 min</span>
-            </div>
-          </div>
-          <div class="vp-item">
-            <div class="vp-thumb">
-              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&q=70" alt="">
-              <div class="vp-play-overlay">▶</div>
-            </div>
-            <div class="vp-meta">
-              <strong>Digital Skills Bootcamp — Recap</strong>
-              <span>Workshop · 2:48 min</span>
-            </div>
-          </div>
-          <div class="vp-item">
-            <div class="vp-thumb">
-              <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=200&q=70" alt="">
-              <div class="vp-play-overlay">▶</div>
-            </div>
-            <div class="vp-meta">
-              <strong>Youth Showcase Night — Full Performance</strong>
-              <span>Performance · 11:05 min</span>
-            </div>
-          </div>
-          <div class="vp-item">
-            <div class="vp-thumb">
-              <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=200&q=70" alt="">
-              <div class="vp-play-overlay">▶</div>
-            </div>
-            <div class="vp-meta">
-              <strong>Behind the Scenes: Talent Incubation</strong>
-              <span>Documentary · 6:20 min</span>
-            </div>
-          </div>
+          {% if videos %}
+            {% for video in videos|slice:":4" %}
+              <div class="vp-item">
+                <a href="{{ video.video_url }}" target="_blank" rel="noopener" class="vp-thumb-link">
+                  <div class="vp-thumb">
+                    {% if video.image %}
+                      <img src="{{ video.image.url }}" alt="{{ video.title }}" loading="lazy">
+                    {% else %}
+                      <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=200&q=70" alt="{{ video.title }}" loading="lazy">
+                    {% endif %}
+                    <div class="vp-play-overlay">▶</div>
+                  </div>
+                </a>
+                <div class="vp-meta">
+                  <strong>{{ video.title }}</strong>
+                  <span>{{ video.category.name }} · Video</span>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p>No video items are available yet. Check back soon for new media.</p>
+          {% endif %}
         </div>
       </div>
 
       <!-- Featured video player -->
       <div class="video-player">
-        <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=900&q=80" alt="Featured video" loading="lazy">
-        <div class="vp-center">
-          <div class="play-btn">▶</div>
-        </div>
-        <div class="vp-title-bar">
-          <span>Featured</span>
-          <p>ISONGA CENTRE — 2025 Season Highlights</p>
-        </div>
+        {% if videos and videos|length > 0 %}
+          {% with featured_video=videos.0 %}
+            {% if featured_video.image %}
+              <img src="{{ featured_video.image.url }}" alt="{{ featured_video.title }}" loading="lazy">
+            {% else %}
+              <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=900&q=80" alt="Featured video" loading="lazy">
+            {% endif %}
+            <a href="{{ featured_video.video_url }}" target="_blank" rel="noopener" class="vp-center"><div class="play-btn">▶</div></a>
+            <div class="vp-title-bar">
+              <span>Featured</span>
+              <p>{{ featured_video.title }}</p>
+            </div>
+          {% endwith %}
+        {% else %}
+          <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=900&q=80" alt="Featured video" loading="lazy">
+          <div class="vp-center"><div class="play-btn">▶</div></div>
+          <div class="vp-title-bar">
+            <span>Featured</span>
+            <p>No video available yet</p>
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -303,7 +186,7 @@
 <!-- ══════════════════════════════════════
      AUTO-SCROLL HIGHLIGHTS STRIP
 ══════════════════════════════════════ -->
-<section class="highlights-sec">
+ <!-- <section class="highlights-sec">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow light">Moments</p>
@@ -313,27 +196,20 @@
 
   <div class="hl-track-wrap">
     <div class="hl-track">
-      <!-- Duplicate items for seamless loop -->
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Performance</span><p>Acoustic Night — April 2025</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Workshop</span><p>Digital Skills Bootcamp</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Community</span><p>Comedy Night — March 2025</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Showcase</span><p>Youth Showcase Q1</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Behind the Scenes</span><p>Incubation Program</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Exhibition</span><p>Cultural Art Show</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Event</span><p>Opening Night 2025</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Film</span><p>Movie Night — Feb 2025</p></div></div>
-      <!-- Duplicates for seamless scroll -->
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Performance</span><p>Acoustic Night — April 2025</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Workshop</span><p>Digital Skills Bootcamp</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Community</span><p>Comedy Night — March 2025</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Showcase</span><p>Youth Showcase Q1</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Behind the Scenes</span><p>Incubation Program</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Exhibition</span><p>Cultural Art Show</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Event</span><p>Opening Night 2025</p></div></div>
-      <div class="hl-card"><img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&q=70" alt=""><div class="hl-card-overlay"></div><div class="hl-card-body"><span>Film</span><p>Movie Night — Feb 2025</p></div></div>
+      {% if highlights %}
+        {% for hl in highlights %}
+          <div class="hl-item">
+            <img src="{{ hl.image.url }}" alt="{{ hl.title }}" loading="lazy">
+            <div class="hl-overlay">
+              <div class="hl-cat">{{ hl.category.name }}</div>
+              <div class="hl-title">{{ hl.title }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
-</section>
+</section>  -->
 
 
 <!-- ══════════════════════════════════════
