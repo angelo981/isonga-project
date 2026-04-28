@@ -146,6 +146,7 @@
     color: var(--muted);
     line-height: 1.8;
     margin-bottom: 16px;
+    text-align: justify;
   }
 
   .sub-content-highlight {
@@ -230,8 +231,8 @@
 
   <div class="hero-inner">
     <div class="hero-left">
-      <h1>{{ post.title }}<br><em>Story</em></h1>
-      <p>{{ post.sub_content }}</p>
+      <h1>{{ post.title }}</h1>
+      <!-- <p>{{ post.sub_content }}</p> -->
     </div>
     <div class="hero-right">
       {% if post.image %}
@@ -247,14 +248,14 @@
 <section class="blog-content">
   <div class="content-wrap">
     <div class="content-section">
-      <h2>About This Article</h2>
+      <h2>About This Story</h2>
       <div class="sub-content-highlight">
         <p>{{ post.sub_content }}</p>
       </div>
     </div>
 
     <div class="content-section">
-      <h2>Full Article</h2>
+      <h2>Full Story</h2>
       <div class="full-content">
         <p>{{ post.content|linebreaks }}</p>
       </div>

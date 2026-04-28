@@ -1,0 +1,259 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}All Photos & Media | ISONGA CENTRE{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'core/css/media_gallery.css' %}">
+<style>
+  .all-media-hero {
+    min-height: 50vh;
+    background: linear-gradient(135deg, #050d14 0%, #0a1520 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 68px;
+    padding-bottom: 40px;
+  }
+
+  .all-media-hero-content {
+    text-align: center;
+    color: #fff;
+    max-width: 800px;
+    padding: 0 40px;
+  }
+
+  .all-media-hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .all-media-hero p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #7ab8d9;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 24px;
+    transition: all 0.3s;
+  }
+
+  .back-link:hover {
+    gap: 10px;
+  }
+
+  .all-media-section {
+    padding: 72px 0;
+    background: #0a1520;
+  }
+
+  .all-media-grid {
+    columns: 3;
+    column-gap: 14px;
+  }
+
+  .all-media-item {
+    break-inside: avoid;
+    margin-bottom: 14px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .all-media-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.55s ease;
+  }
+
+  .all-media-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .all-media-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(5, 13, 20, 0.85) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px 18px;
+  }
+
+  .all-media-item:hover .all-media-overlay {
+    opacity: 1;
+  }
+
+  .all-media-label {
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .all-media-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4A90C4;
+    flex-shrink: 0;
+  }
+
+  .all-media-zoom {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+    color: #fff;
+  }
+
+  .all-media-item:hover .all-media-zoom {
+    opacity: 1;
+  }
+
+  .no-media-msg {
+    text-align: center;
+    padding: 60px 40px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 1024px) {
+    .all-media-grid {
+      columns: 2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .all-media-grid {
+      columns: 1;
+    }
+
+    .all-media-hero {
+      min-height: 40vh;
+      padding-bottom: 30px;
+    }
+
+    .all-media-hero-content {
+      padding: 0 20px;
+    }
+
+    .all-media-hero h1 {
+      font-size: 1.8rem;
+    }
+
+    .all-media-hero p {
+      font-size: 0.95rem;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ── HERO SECTION ── -->
+<section class="all-media-hero">
+  <div class="all-media-hero-content">
+    <a href="{% url 'media_gallery' %}" class="back-link">← Back to Media Gallery</a>
+    <h1>All Photos & Media</h1>
+    <p>Explore our complete collection of photos, videos, and moments from ISONGA CENTRE events and programs.</p>
+  </div>
+</section>
+
+<!-- ── PHOTOS SECTION ── -->
+<section class="all-media-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow light">Photography</p>
+      <h2>All <em>Photos</em></h2>
+      <p>Every frame captures the energy and talent of ISONGA CENTRE.</p>
+    </div>
+
+    {% if photos %}
+      <div class="all-media-grid">
+        {% for item in photos %}
+          <a class="all-media-item" href="{% url 'media_detail' item.slug %}">
+            <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+            <div class="all-media-overlay">
+              <div class="all-media-label">
+                <span class="all-media-dot"></span>{{ item.title }}
+              </div>
+            </div>
+            <div class="all-media-zoom">⊕</div>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="no-media-msg">
+        <p>No photos available at the moment. Please check back soon.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- ── VIDEOS SECTION ── -->
+{% if videos %}
+  <section class="all-media-section" style="background: #0f1a27; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow light">Video Library</p>
+        <h2>All <em>Videos</em></h2>
+        <p>From live performances to workshop recaps and documentary features.</p>
+      </div>
+
+      <div class="all-media-grid">
+        {% for item in videos %}
+          <a class="all-media-item" href="{% url 'media_detail' item.slug %}">
+            {% if item.image %}
+              <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+            {% else %}
+              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="{{ item.title }}" loading="lazy">
+            {% endif %}
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">▶</div>
+            <div class="all-media-overlay">
+              <div class="all-media-label">
+                <span class="all-media-dot"></span>{{ item.title }}
+              </div>
+            </div>
+            <div class="all-media-zoom">⊕</div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+<!-- ── BACK BUTTON SECTION ── -->
+<section class="all-media-section" style="background: #0a1520; border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 0;">
+  <div class="wrap" style="text-align: center;">
+    <a href="{% url 'media_gallery' %}" class="btn btn-more" style="display: inline-flex;">← Back to Media Gallery</a>
+  </div>
+</section>
+
+{% endblock %}

@@ -19,12 +19,12 @@
 <section class="page-hero">
   <!-- Collage background grid -->
   <div class="hero-bg-grid">
-    <div class="hbg-cell"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=70" alt=""></div>
-    <div class="hbg-cell"><img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=600&q=70" alt=""></div>
-    <div class="hbg-cell"><img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=70" alt=""></div>
-    <div class="hbg-cell"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&q=70" alt=""></div>
-    <div class="hbg-cell"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=70" alt=""></div>
-    <div class="hbg-cell"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=70" alt=""></div>
+    <div class="hbg-cell"><img src="{% static 'img/homepage.jpeg' %}" alt=""></div>
+    <div class="hbg-cell"><img src="{% static 'img/who.jpeg' %}"alt=""></div>
+    <div class="hbg-cell"><img src="{% static 'img/dancer.jpeg' %}" alt=""></div>
+    <div class="hbg-cell"><img src="{% static 'img/power.jpeg' %}" alt=""></div>
+    <div class="hbg-cell"><img src="{% static 'img/fire.jpeg' %}" alt=""></div>
+    <div class="hbg-cell"><img src="{% static 'img/comedy2.jpeg' %}" alt=""></div>
   </div>
   <div class="hero-overlay-bottom"></div>
 
@@ -103,7 +103,7 @@
     <div class="masonry">
       {% if photos %}
         {% for item in photos %}
-          <a class="m-item lightbox-trigger" href="{{ item.image.url }}">
+          <a class="m-item lightbox-trigger" href="{% url 'media_detail' item.slug %}">
             <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
             <div class="m-overlay"><div class="m-label"><span class="m-cat-dot"></span>{{ item.title }}</div></div>
             <div class="m-zoom">⊕</div>
@@ -113,6 +113,12 @@
         <p>No gallery photos are available at the moment. Please check back soon.</p>
       {% endif %}
     </div>
+
+    {% if has_more_photos %}
+      <div class="gallery-more-btn-wrap">
+        <a href="{% url 'all_media' %}" class="btn btn-more">View All {{ all_photos_count }} Photos →</a>
+      </div>
+    {% endif %}
   </div>
 </section>
 

@@ -32,6 +32,7 @@ class Gallery(models.Model):
     type = models.CharField(choices=GALLERY_CHOICES)
     image = models.ImageField(upload_to="gallery/", max_length=255)
     video_url = models.URLField(blank=True, null=True)
+    slug = models.SlugField(unique=True, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.title

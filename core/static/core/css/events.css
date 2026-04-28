@@ -72,7 +72,7 @@ body { font-family: var(--font-sans); color: var(--txt); background: #fff; }
 ══════════════════════════════════════ */
 .ev-hero {
   position: relative;
-  min-height: 75vh;
+  min-height: 55vh;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -91,17 +91,24 @@ body { font-family: var(--font-sans); color: var(--txt); background: #fff; }
 
 .ev-hero-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background:
-    linear-gradient(145deg,
-      rgba(8,30,51,0.94) 0%,
-      rgba(26,79,120,0.55) 55%,
-      rgba(8,30,51,0.30) 100%
-    );
+  background: linear-gradient(to top, rgba(8,30,51,0.9) 0%, rgba(8,30,51,0.65) 40%, transparent 100%);
+}
+
+/* Curved bottom */
+.ev-hero-arc {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 72px;
+  background: #ffffff;
+  clip-path: ellipse(55% 100% at 50% 100%);
+  z-index: 3;
 }
 
 .ev-hero-inner {
   position: relative; z-index: 2;
-  padding: 72px 40px 100px;
+  padding: 48px 40px 70px;
   max-width: 1180px; margin: 0 auto; width: 100%;
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 52px; align-items: flex-end;
@@ -635,7 +642,8 @@ body { font-family: var(--font-sans); color: var(--txt); background: #fff; }
 
 @media (max-width: 900px) {
   .wrap { padding: 0 24px; }
-  .ev-hero-inner { grid-template-columns: 1fr; padding: 80px 24px 60px; gap: 36px; }
+  .ev-hero-inner { grid-template-columns: 1fr; padding: 48px 24px 60px; gap: 36px; }
+  .ev-hero-arc { height: 60px; }
   .uc-tl-item   { grid-template-columns: 70px 1fr; gap: 16px; }
   .uc-tl-card, .uc-tl-card.featured-card { grid-template-columns: 1fr; }
   .uc-tl-img, .uc-tl-img.small { min-height: 180px; }
@@ -648,7 +656,13 @@ body { font-family: var(--font-sans); color: var(--txt); background: #fff; }
 @media (max-width: 600px) {
   .formats-grid  { grid-template-columns: 1fr; }
   .xp-grid       { grid-template-columns: 1fr 1fr; }
-  .ev-hero-left h1 { font-size: 2.6rem; }
+  .ev-hero { min-height: 48vh; }
+  .ev-hero-inner { padding: 36px 16px 50px; gap: 24px; }
+  .ev-hero-arc { height: 50px; }
+  .ev-hero-left h1 { font-size: 2.2rem; }
+  .ev-hero-left > p { font-size: 0.95rem; }
+  .ev-tags { gap: 6px; }
+  .ev-tag-chip { font-size: 0.7rem; padding: 5px 12px; }
   .sec-head      { flex-direction: column; align-items: flex-start; }
   .past-grid     { grid-template-columns: 1fr; }
   .upcoming-grid { grid-template-columns: 1fr; }

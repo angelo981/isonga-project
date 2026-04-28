@@ -146,6 +146,7 @@
     color: var(--muted);
     line-height: 1.8;
     margin-bottom: 16px;
+    text-align: justify;
   }
 
   .sub-content-highlight {
@@ -326,8 +327,8 @@
 
   <div class="hero-inner">
     <div class="hero-left">
-      <h1>{{ talent.title }}<br><em>Story</em></h1>
-      <p>{{ talent.sub_content|truncatewords:30 }}</p>
+      <h1>{{ talent.title }}</h1>
+      <!-- <p>{{ talent.sub_content|truncatewords:30 }}</p> -->
     </div>
     <div class="hero-right">
       {% if talent.image %}
@@ -343,7 +344,7 @@
 <section class="talent-content">
   <div class="content-wrap">
     <div class="content-section">
-      <h2>About {{ talent.title }}</h2>
+      <h2>About talent</h2>
       <div class="sub-content-highlight">
         <p>{{ talent.sub_content }}</p>
       </div>

@@ -16,6 +16,12 @@
 <section class="ev-hero">
   <!-- Background image -->
   <div class="ev-hero-bg" style="background-image: url('{% static "img/events.jpeg" %}');"></div>
+  
+  <!-- Overlay -->
+  <div class="ev-hero-overlay"></div>
+  
+  <!-- Curved bottom -->
+  <div class="ev-hero-arc"></div>
 
   <div class="ev-hero-inner">
     <div class="ev-hero-left">
@@ -154,7 +160,7 @@
               {% if event.image %}
               <img src="{{ event.image.url }}" alt="{{ event.title_en }}" loading="lazy">
               {% else %}
-              <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&q=80" alt="{{ event.title_en }}" loading="lazy">
+              <img src="{% static 'img/mc.jpeg' %}" alt="{{ event.title_en }}" loading="lazy">
               {% endif %}
               <div class="past-img-overlay"></div>
               <span class="past-done-badge">✓ Done</span>
@@ -239,7 +245,7 @@
         <a class="btn btn-solid" href="{% url 'contact' %}">Inquire About Venue</a>
       </div>
       <div class="host-photo">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80" alt="Isonga Centre event space" loading="lazy">
+        <img src="{% static 'img/mc.jpeg' %}" alt="Isonga Centre event space" loading="lazy">
         <div class="host-photo-accent"></div>
       </div>
     </div>

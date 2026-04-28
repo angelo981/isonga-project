@@ -30,10 +30,17 @@ body { font-family: var(--font-sans); }
   inset: 0;
   z-index: 0;
   background:
-    url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=1920&q=80') center/cover no-repeat,
     radial-gradient(ellipse 80% 60% at 70% 20%, rgba(42,130,200,0.28) 0%, transparent 60%),
     radial-gradient(ellipse 60% 80% at 10% 80%, rgba(240,165,0,0.12) 0%, transparent 55%),
     radial-gradient(ellipse 100% 100% at 50% 50%, #0d2d47 0%, #081e33 100%);
+}
+.hero-bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* subtle dot grid */
@@ -528,10 +535,13 @@ body { font-family: var(--font-sans); }
   .impact-bg { position: relative; overflow: hidden; background: var(--sky-pale); }
   .impact-scene {
     position: absolute; inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=70');
-    background-size: cover;
-    background-position: center;
     opacity: 0.12;
+  }
+  .impact-scene img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
   .impact-content { position: relative; z-index: 2; max-width: 600px; }
   .impact-content h2 { color: var(--ink); }
@@ -572,4 +582,167 @@ body { font-family: var(--font-sans); }
   .cta-inner p { color: rgba(255,255,255,0.68); font-size: 0.96rem; line-height: 1.78; max-width: 480px; }
   .cta-btns { display: flex; flex-direction: column; gap: 12px; min-width: 210px; }
 
+  /* ── MOBILE RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .wrap { padding: 0 28px; }
+    .pillars-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .pillar { min-height: 320px; }
+    .programs-grid { grid-template-columns: repeat(2, 1fr); }
+    .events-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    section { padding: 64px 0; }
+    .wrap { padding: 0 20px; }
+    
+    /* Hero section */
+    .hero-body {
+      grid-template-columns: 1fr;
+      padding: 48px 20px;
+      gap: 20px;
+    }
+    
+    .hero h1 { font-size: 2rem; }
+    .hero-lead { font-size: 0.9rem; }
+    .feature-pills { gap: 6px; }
+    .pill { font-size: 0.7rem; padding: 5px 12px; }
+    
+    .hero-right {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    
+    .stat-grid { flex: 1 1 100%; }
+    .event-card { flex: 1 1 100%; }
+    
+    /* Pillars section */
+    .pillars-grid { grid-template-columns: 1fr; gap: 16px; }
+    .pillar {
+      min-height: 280px;
+      border-radius: 16px;
+    }
+    
+    .pillar-bg {
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .pillar-body { padding: 20px 18px; }
+    .pillar-body h3 { font-size: 1.1rem; }
+    .pillar-body p { font-size: 0.8rem; }
+    
+    /* Why section */
+    .why-grid { gap: 40px; }
+    .why-photo-wrap { border-radius: 16px; }
+    .stats-row { grid-template-columns: 1fr; }
+    .stat-cell {
+      padding: 16px 12px;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-cell:last-child { border-bottom: none; }
+    
+    /* Programs section */
+    .programs-grid { grid-template-columns: 1fr; gap: 16px; }
+    .program-card { padding: 24px 20px; }
+    .prog-icon { width: 40px; height: 40px; font-size: 1.1rem; }
+    
+    /* Events section */
+    .events-grid { grid-template-columns: 1fr; gap: 16px; }
+    
+    /* CTA section */
+    .cta-inner { gap: 40px; }
+    .cta-btns { flex-direction: row; gap: 10px; min-width: auto; }
+    
+    .btn {
+      padding: 10px 18px;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 48px 0; }
+    .wrap { padding: 0 16px; }
+    
+    .eyebrow { font-size: 0.65rem; margin-bottom: 12px; }
+    .sec-title { font-size: 1.6rem; }
+    .sec-sub { font-size: 0.9rem; }
+    
+    /* Hero specific */
+    .hero-body { padding: 40px 16px 20px; }
+    .hero h1 { font-size: 1.7rem; margin-bottom: 12px; }
+    .hero-tag { font-size: 0.65rem; margin-bottom: 10px; }
+    .hero-lead { font-size: 0.85rem; margin-bottom: 16px; }
+    
+    .hero-btns {
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    
+    .btn {
+      width: 100%;
+      padding: 10px 16px;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+    
+    .feature-pills { flex-direction: column; gap: 6px; }
+    .pill { width: 100%; }
+    
+    .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .stat-card { padding: 12px 10px; border-radius: 10px; }
+    .stat-card strong { font-size: 1.4rem; }
+    .stat-card span { font-size: 0.6rem; }
+    
+    /* Event card in hero */
+    .event-card { padding: 12px 14px; }
+    .event-title { font-size: 0.9rem; }
+    .event-meta { font-size: 0.7rem; gap: 8px; }
+    
+    /* Event strip */
+    .event-strip { padding-left: 16px; }
+    .strip-header { padding-right: 16px; }
+    .strip-fade-left { left: 16px; width: 32px; }
+    .ecard { flex: 0 0 160px; height: 110px; }
+    
+    /* Pillar cards */
+    .pillar { min-height: 240px; border-radius: 12px; }
+    .pillar-body { padding: 16px 14px; }
+    .pillar-num { font-size: 0.65rem; margin-bottom: 6px; }
+    .pillar-body h3 { font-size: 0.95rem; margin-bottom: 6px; }
+    .pillar-body p { font-size: 0.75rem; opacity: 0.7; }
+    
+    /* Why section */
+    .why-grid { gap: 24px; }
+    .why-photo-wrap { border-radius: 12px; aspect-ratio: 1; }
+    .why-badge { bottom: 12px; left: 12px; right: 12px; padding: 12px 14px; border-radius: 10px; }
+    .why-badge-icon { width: 36px; height: 36px; font-size: 1rem; }
+    .why-badge strong { font-size: 0.8rem; }
+    .why-badge span { font-size: 0.7rem; }
+    
+    .stats-row { gap: 0; margin-top: 24px; }
+    .stat-cell { padding: 16px 10px; }
+    
+    /* Programs */
+    .prog-icon { width: 36px; height: 36px; font-size: 1rem; margin-bottom: 12px; }
+    .program-card h3 { font-size: 0.95rem; }
+    .program-card p { font-size: 0.78rem; }
+    
+    /* Events */
+    .event-tag { font-size: 0.65rem; padding: 4px 10px; }
+    .event-card h3 { font-size: 0.95rem; margin-bottom: 8px; }
+    .event-card p { font-size: 0.78rem; }
+    
+    /* CTA section */
+    .cta-inner { grid-template-columns: 1fr; }
+    .cta-inner h2 { font-size: 1.5rem; margin-bottom: 10px; }
+    .cta-inner p { font-size: 0.85rem; }
+    .cta-btns { flex-direction: column; gap: 8px; min-width: auto; }
+    
+    /* Impact section */
+    .impact-content { max-width: 100%; }
+    .impact-content h2 { font-size: 1.6rem; }
+    .impact-content p { font-size: 0.9rem; }
+  }
  

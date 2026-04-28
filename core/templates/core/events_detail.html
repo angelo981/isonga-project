@@ -189,6 +189,7 @@
     color: var(--muted);
     line-height: 1.8;
     margin-bottom: 20px;
+    text-align: justify;
   }
 
   .event-details {
@@ -333,7 +334,26 @@
 
   @media (max-width: 768px) {
     .hero-inner {
+      grid-template-columns: 1fr;
       padding: 40px 20px 80px;
+      gap: 24px;
+    }
+
+    .hero-left {
+      order: 2;
+    }
+
+    .hero-right {
+      order: 1;
+      position: relative;
+      z-index: 5;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 1;
     }
 
     .hero-inner h1 {
@@ -370,7 +390,7 @@
   <div class="hero-inner">
     <div class="hero-left">
       <span class="hero-tag">{{ event.category.name }}</span>
-      <h1>{{ event.title_en }}<br><em>Experience</em></h1>
+      <h1>{{ event.title_en }}</h1>
       <div class="hero-meta">
         <span>📅 {{ event.event_date|date:"F d, Y" }}</span>
         <span>🕘 {{ event.event_date|time:"H:i" }}</span>
@@ -391,7 +411,7 @@
 <section class="event-content">
   <div class="wrap">
     <div class="content-section">
-      <h2>Description</h2>
+      <h2>Event Overview</h2>
       <p>{{ event.description_en }}</p>
     </div>
 

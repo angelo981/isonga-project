@@ -134,7 +134,7 @@ def media_gallery(request):
     from .models import Category
     search_query = request.GET.get('q', '').strip()
     selected_category = request.GET.get('category', '').strip()
-    media_items = Gallery.objects.all().order_by('-created_at')
+    media_items = Gallery.objects.exclude(slug__isnull=True).exclude(slug='').all().order_by('-created_at')
 
     if selected_category:
         media_items = media_items.filter(category__name__iexact=selected_category)
@@ -147,15 +147,81 @@ def media_gallery(request):
     photos = media_items.filter(Q(video_url='') | Q(video_url__isnull=True)).order_by('-created_at')
     videos = media_items.exclude(Q(video_url='') | Q(video_url__isnull=True)).order_by('-created_at')
     categories = Category.objects.all()
+    
+    # Limit photos to 8, check if there are more
+    photos_limited = photos[:8]
+    has_more_photos = photos.count() > 8
+    
     context = {
         'all_media': media_items,
-        'photos': photos,
+        'photos': photos_limited,
+        'all_photos_count': photos.count(),
+        'has_more_photos': has_more_photos,
         'videos': videos,
         'categories': categories,
         'selected_category': selected_category,
         'search_query': search_query,
     }
     return render(request, 'core/media_gallery.html', context)
+
+
+def media_detail(request, slug):
+    from .models import Gallery
+    media = Gallery.objects.filter(slug=slug).first()
+    if not media:
+        raise Http404('Media not found')
+    
+    # Get all photos in the same category for navigation
+    all_media_in_category = Gallery.objects.filter(category=media.category).order_by('-created_at')
+    current_index = list(all_media_in_category.values_list('id', flat=True)).index(media.id) if media.id in all_media_in_category.values_list('id', flat=True) else 0
+    
+    # Get next media item
+    next_media = None
+    if current_index + 1 < all_media_in_category.count():
+        next_media = all_media_in_category[current_index + 1]
+    else:
+        # Loop back to first
+        next_media = all_media_in_category.first()
+    
+    # Get all media items for carousel
+    media_list = list(all_media_in_category)
+    
+    context = {
+        'media': media,
+        'next_media': next_media,
+        'media_list': media_list,
+        'current_index': current_index,
+    }
+    return render(request, 'core/media_detail.html', context)
+
+
+def all_media(request):
+    from .models import Category
+    search_query = request.GET.get('q', '').strip()
+    selected_category = request.GET.get('category', '').strip()
+    media_items = Gallery.objects.exclude(slug__isnull=True).exclude(slug='').all().order_by('-created_at')
+
+    if selected_category:
+        media_items = media_items.filter(category__name__iexact=selected_category)
+
+    if search_query:
+        media_items = media_items.filter(
+            Q(title__icontains=search_query) | Q(category__name__icontains=search_query)
+        )
+
+    photos = media_items.filter(Q(video_url='') | Q(video_url__isnull=True)).order_by('-created_at')
+    videos = media_items.exclude(Q(video_url='') | Q(video_url__isnull=True)).order_by('-created_at')
+    categories = Category.objects.all()
+    
+    context = {
+        'photos': photos,
+        'videos': videos,
+        'categories': categories,
+        'selected_category': selected_category,
+        'search_query': search_query,
+        'is_all_media': True,
+    }
+    return render(request, 'core/all_media.html', context)
 
 
 def blog(request):
