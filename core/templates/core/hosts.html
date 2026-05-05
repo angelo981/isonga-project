@@ -1,0 +1,713 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Hosts & Hosting Venue | ISONGA CENTRE{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/hosts.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ══════════════════════════════════════
+     HERO SECTION
+══════════════════════════════════════ -->
+<section class="hero-hosts">
+  <!-- Background image -->
+  <div class="hero-hosts-bg" style="background-image: url('{% static "img/team.jpeg" %}');"></div>
+  
+  <!-- Overlay -->
+  <div class="hero-hosts-overlay"></div>
+  
+  <!-- Curved bottom -->
+  <div class="hero-hosts-arc"></div>
+
+  <div class="hero-hosts-inner">
+    <!-- Left content -->
+    <div class="hero-hosts-left">
+      <div class="tag">Venue & Space Rental · Musanze, Rwanda</div>
+      <h1>Your Event Deserves a <em>Creative Home</em></h1>
+      <p>ISONGA is where ideas come alive. From professional workshops to vibrant celebrations, we offer flexible indoor halls, open garden spaces, and full event support all in one inspiring venue.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Request a Quote</a>
+        <a href="#spaces" class="btn-outline">Explore Spaces</a>
+      </div>
+      <p class="hero-note">Discounted packages for NGOs, youth programs, and long-term partners.</p>
+    </div>
+
+    <!-- Right: Video section -->
+    <div class="hero-hosts-right">
+      <div class="video-section">
+        <div class="video-container">
+          <video 
+            class="venue-video" 
+            autoplay 
+            muted 
+            loop 
+            playsinline
+            controls
+          >
+            <source src="{{ media_url }}video/top1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>Indoor</strong>
+            <span>Rooms & halls</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Outdoor</strong>
+            <span>Garden space</span>
+          </div>
+          <div class="hero-stat">
+            <strong>AV+</strong>
+            <span>Event support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- MARQUEE STRIP -->
+<!-- <div class="strip">
+  <div class="strip-track">
+    <span class="strip-item">Workshops</span>
+    <span class="strip-item">Exhibitions</span>
+    <span class="strip-item">Corporate Meetings</span>
+    <span class="strip-item">Team Building</span>
+    <span class="strip-item">Product Launches</span>
+    <span class="strip-item">Private Parties</span>
+    <span class="strip-item">Family Celebrations</span>
+    <span class="strip-item">Community Events</span>
+    <span class="strip-item">Seminars</span>
+    <span class="strip-item">Cultural Showcases</span> -->
+    <!-- repeated for seamless loop -->
+    <!-- <span class="strip-item">Workshops</span>
+    <span class="strip-item">Exhibitions</span>
+    <span class="strip-item">Corporate Meetings</span>
+    <span class="strip-item">Team Building</span>
+    <span class="strip-item">Product Launches</span>
+    <span class="strip-item">Private Parties</span>
+    <span class="strip-item">Family Celebrations</span>
+    <span class="strip-item">Community Events</span>
+    <span class="strip-item">Seminars</span>
+    <span class="strip-item">Cultural Showcases</span>
+  </div>
+</div> -->
+ 
+<!-- EVENT TYPES -->
+<section>
+  <div class="container">
+    <div class="section-label">Designed for every experience</div>
+    <h2 class="section-title">A space for ideas,<br>people & celebrations.</h2>
+    <p class="section-desc">Whether professional, cultural, educational, or social — ISONGA gives you a flexible environment with genuine creative energy and practical support.</p>
+ 
+    <div class="event-grid">
+      <div class="event-chip">Exhibitions & Showcases</div>
+      <div class="event-chip">Workshops & Seminars</div>
+      <div class="event-chip">Team Building Events</div>
+      <div class="event-chip">Corporate Meetings</div>
+      <div class="event-chip">Product Launches</div>
+      <div class="event-chip">Family Celebrations</div>
+      <div class="event-chip">Private Parties</div>
+      <div class="event-chip">Community Events</div>
+      <div class="event-chip">Cultural Showcases</div>
+      <div class="event-chip">NGO & Social Impact</div>
+      <div class="event-chip">Networking Events</div>
+      <div class="event-chip">Receptions & Galas</div>
+    </div>
+  </div>
+</section>
+ 
+<!-- SPACES -->
+<section class="spaces-section" id="spaces">
+  <div class="container">
+    <div class="spaces-header">
+      <div>
+        <div class="section-label">Our Spaces</div>
+        <h2 class="section-title">Choose the setup<br>that fits your event.</h2>
+      </div>
+    </div>
+ 
+    <div class="spaces-grid">
+      <!-- Indoor -->
+      <div class="space-card">
+        <div class="space-img space-video-container">
+          <video class="space-video" muted autoplay loop playsinline controls>
+            <source src="{{ media_url }}video/top1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <span class="space-img-badge">Workshops · Seminars · Meetings</span>
+        </div>
+        <div class="space-body">
+          <h3>Indoor Rooms & Halls</h3>
+          <p>Flexible, professionally equipped indoor spaces designed for focused work — from corporate trainings and boardroom sessions to exhibitions, seminars, and creative workshops.</p>
+          <div class="feature-list">
+            <div class="feature-item">Flexible seating</div>
+            <div class="feature-item">AV support available</div>
+            <div class="feature-item">High-speed internet</div>
+            <div class="feature-item">Professional setup</div>
+          </div>
+          <a href="#contact" class="btn-primary">Request This Space</a>
+        </div>
+      </div>
+ 
+      <!-- Outdoor -->
+      <div class="space-card">
+        <div class="space-img space-video-container">
+          <video class="space-video" muted autoplay loop playsinline controls>
+            <source src="{{ media_url }}video/top3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <span class="space-img-badge">Parties · Exhibitions · Team Building</span>
+        </div>
+        <div class="space-body">
+          <h3>Outdoor Garden Space</h3>
+          <p>A refreshing open-air environment for celebrations, cultural showcases, team activities, and private gatherings — surrounded by natural energy and creative atmosphere.</p>
+          <div class="feature-list">
+            <div class="feature-item">Open-air atmosphere</div>
+            <div class="feature-item">Custom event layouts</div>
+            <div class="feature-item">Creative garden setting</div>
+            <div class="feature-item">Ideal for social events</div>
+          </div>
+          <a href="#contact" class="btn-primary">Request This Space</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     EQUIPMENT & RENTALS GALLERY
+══════════════════════════════════════ -->
+<section class="gallery-section equipment-section">
+  <div class="container">
+    <div class="gallery-header">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Premium <em>Equipment & Rentals</em></h2>
+      <p class="section-desc">Professional-grade equipment available for your event. From sound systems to lighting rigs, stage setups to AV production.</p>
+    </div>
+
+    <div class="equipment-grid">
+      <!-- Sound System -->
+      <div class="equipment-card">
+        <div class="equipment-img">
+          <img src="{% static 'img/sound.jpeg' %}" alt="Sound System">
+          <div class="equipment-overlay">
+            <span class="equipment-tag">Audio</span>
+          </div>
+        </div>
+        <div class="equipment-info">
+          <h3>Professional Sound Systems</h3>
+          <p>High-fidelity audio equipment with microphones, speakers, and mixing consoles for crystal-clear events.</p>
+          <a href="#contact" class="equipment-btn">Inquire →</a>
+        </div>
+      </div>
+
+      <!-- Lighting -->
+      <div class="equipment-card">
+        <div class="equipment-img">
+          <img src="{% static 'img/light.jpeg' %}" alt="Lighting Equipment">
+          <div class="equipment-overlay">
+            <span class="equipment-tag">Lighting</span>
+          </div>
+        </div>
+        <div class="equipment-info">
+          <h3>Advanced Lighting Rigs</h3>
+          <p>LED lights, spotlights, and dynamic lighting systems to set the perfect mood and atmosphere.</p>
+          <a href="#contact" class="equipment-btn">Inquire →</a>
+        </div>
+      </div>
+
+      <!-- Stage Setup -->
+      <div class="equipment-card">
+        <div class="equipment-img">
+          <img src="{% static 'img/stage1.webp' %}" alt="Stage Setup">
+          <div class="equipment-overlay">
+            <span class="equipment-tag">Staging</span>
+          </div>
+        </div>
+        <div class="equipment-info">
+          <h3>Professional Stage Setups</h3>
+          <p>Modular stage platforms, backdrops, and professional staging equipment for any event scale.</p>
+          <a href="#contact" class="equipment-btn">Inquire →</a>
+        </div>
+      </div>
+
+      <!-- Projection & AV -->
+      <div class="equipment-card">
+        <div class="equipment-img">
+          <img src="{% static 'img/media.png' %}" alt="Projection Equipment">
+          <div class="equipment-overlay">
+            <span class="equipment-tag">AV/Projection</span>
+          </div>
+        </div>
+        <div class="equipment-info">
+          <h3>Projection & AV Systems</h3>
+          <p>High-resolution projectors, large displays, and complete AV setups for presentations and streaming.</p>
+          <a href="#contact" class="equipment-btn">Inquire →</a>
+        </div>
+      </div>
+
+      <!-- Furniture & Decor -->
+      <div class="equipment-card">
+        <div class="equipment-img">
+          <img src="{% static 'img/decor.jpeg' %}" alt="Furniture & Setup">
+          <div class="equipment-overlay">
+            <span class="equipment-tag">Furnishings</span>
+          </div>
+        </div>
+        <div class="equipment-info">
+          <h3>Event Furniture & Decor</h3>
+          <p>Tables, chairs, podiums, and decorative elements to create the perfect ambiance for your event.</p>
+          <a href="#contact" class="equipment-btn">Inquire →</a>
+        </div>
+      </div>
+
+      <!-- Catering Setup -->
+      <div class="equipment-card">
+        <div class="equipment-img">
+          <img src="{% static 'img/bar.webp' %}" alt="Catering Setup">
+          <div class="equipment-overlay">
+            <span class="equipment-tag">Catering</span>
+          </div>
+        </div>
+        <div class="equipment-info">
+          <h3>Catering & Bar Setup</h3>
+          <p>Professional serving stations, bar equipment, and catering accessories for food and beverage service.</p>
+          <a href="#contact" class="equipment-btn">Inquire →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="gallery-cta">
+      <a href="#contact" class="btn-primary">View Full Equipment Catalog</a>
+    </div> -->
+  </div>
+</section>
+
+ 
+<!-- PACKAGES -->
+<section class="packages-section" id="packages">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-label">Flexible packages</div>
+      <h2 class="section-title">Simple options for every need.</h2>
+      <p class="section-desc" style="margin:0 auto;">One size doesn't fit all. Choose the package that speaks to your event's purpose, and we'll take care of the rest.</p>
+    </div>
+ 
+    <div class="packages-grid">
+      <div class="pkg-card">
+        <div class="pkg-icon">🌱</div>
+        <h3>Community Package</h3>
+        <p>Designed for NGOs, youth programs, and community initiatives making a social impact in Musanze and beyond.</p>
+        <div class="pkg-note">Best for workshops and social impact activities</div>
+        <a href="#contact" class="btn-primary" style="width:100%; text-align:center; display:block;">Request Package</a>
+      </div>
+ 
+      <div class="pkg-card" style="border-color: rgba(56,189,248,0.3);">
+        <div class="pkg-icon" style="background:rgba(56,189,248,0.15);">🏢</div>
+        <h3>Corporate Package</h3>
+        <p>For companies, institutions, and professional teams that need a focused, well-equipped environment for serious work.</p>
+        <div class="pkg-note">Best for meetings, launches and team building</div>
+        <a href="#contact" class="btn-primary" style="width:100%; text-align:center; display:block;">Request Package</a>
+      </div>
+ 
+      <div class="pkg-card">
+        <div class="pkg-icon">🎉</div>
+        <h3>Celebration Package</h3>
+        <p>For families, private parties, and social gatherings where memories are made and milestones are honored.</p>
+        <div class="pkg-note">Best for birthdays, receptions and special moments</div>
+        <a href="#contact" class="btn-primary" style="width:100%; text-align:center; display:block;">Request Package</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ══════════════════════════════════════
+     PAST EVENTS GALLERY
+══════════════════════════════════════ -->
+<section class="gallery-section events-gallery-section">
+  <div class="container">
+    <div class="gallery-header">
+      <div class="section-label">Our Portfolio</div>
+      <h2 class="section-title">Events We've <em>Hosted & Supported</em></h2>
+      <p class="section-desc">Explore a showcase of successful events we've organized and supported at ISONGA. From intimate gatherings to large celebrations.</p>
+    </div>
+
+    <div class="events-gallery">
+      <!-- Event 1 -->
+      <div class="gallery-item large">
+        <img src="{% static 'img/events.jpeg' %}" alt="Corporate Event">
+        <div class="gallery-overlay">
+          <h3>Corporate Workshop</h3>
+          <p>Professional development event</p>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="gallery-item">
+        <img src="{% static 'img/homepage.jpeg' %}" alt="Cultural Showcase">
+        <div class="gallery-overlay">
+          <h3>Cultural Showcase</h3>
+          <p>Community celebration</p>
+        </div>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="gallery-item">
+        <img src="{% static 'img/talent.jpeg' %}" alt="Talent Performance">
+        <div class="gallery-overlay">
+          <h3>Talent Showcase</h3>
+          <p>Live performance event</p>
+        </div>
+      </div>
+
+      <!-- Event 4 -->
+      <div class="gallery-item large">
+        <img src="{% static 'img/power.jpeg' %}" alt="Team Building">
+        <div class="gallery-overlay">
+          <h3>Team Building Event</h3>
+          <p>Corporate team experience</p>
+        </div>
+      </div>
+     <!-- Event 5 -->
+      <div class="gallery-item large">
+        <img src="{% static 'img/energy.jpeg' %}" alt="Team Building">
+        <div class="gallery-overlay">
+          <h3>Team Building Event</h3>
+          <p>Corporate team experience</p>
+        </div>
+      </div>
+       <!-- Event 6 -->
+      <div class="gallery-item large">
+        <img src="{% static 'img/decor1.webp' %}" alt="Team Building">
+        <div class="gallery-overlay">
+          <h3>Event Furniture</h3>
+          <p>Private party</p>
+        </div>
+      </div>
+    <div class="gallery-cta">
+      <p class="gallery-stats">
+        <span>50+</span> Events Hosted | 
+        <span>1000+</span> Participants | 
+        <span>100%</span> Client Satisfaction
+      </p>
+      <a href="#contact" class="btn-primary">Book Your Event</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECTION / TRUST SECTION -->
+<!-- <section class="connection-section">
+  <div class="container">
+    <div class="connection-inner">
+      <div>
+        <div class="section-label">Why clients choose us</div>
+        <h2 class="section-title">We don't just rent a space. We build something together.</h2>
+        <p style="color:var(--muted); margin-bottom:1.5rem; line-height:1.8;">At ISONGA, every inquiry is the beginning of a relationship. We listen, we plan, and we stay with you from the first conversation to the last thank-you. Your event reflects who you are — and we take that seriously.</p>
+ 
+        <div class="quote-block">
+          <blockquote>"The team at ISONGA made our product launch feel effortless. Every detail was handled with care."</blockquote>
+          <cite>— Previous client, Musanze</cite>
+        </div>
+      </div>
+ 
+      <div class="trust-list">
+        <div class="trust-item">
+          <div class="trust-icon">🤝</div>
+          <div>
+            <strong>Personalized planning</strong>
+            <p>We work with you directly — no agents, no middlemen. Your vision guides every decision we make.</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🛡️</div>
+          <div>
+            <strong>Reliable & transparent</strong>
+            <p>Clear pricing, clear timelines, and a team that shows up when it counts. No surprises.</p>
+          </div>
+        </div> -->
+        <!-- <div class="trust-item">
+          <div class="trust-icon">🎯</div>
+          <div>
+            <strong>Tailored to your goals</strong>
+            <p>From the seating layout to the AV setup, everything is shaped around what your event actually needs.</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🌍</div>
+          <div>
+            <strong>Rooted in community</strong>
+            <p>We believe events have the power to connect people. ISONGA is proud to host the voices of Musanze and beyond.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  -->
+<!-- INQUIRY FORM -->
+<section class="form-section" id="contact">
+  <div class="container">
+    <div class="form-header">
+      <div class="section-label">Equipment & Venue Request</div>
+      <h2 class="section-title">Build your perfect event</h2>
+      <p class="section-desc">Select the equipment and spaces you need. Our team will curate a custom package and contact you within 24 hours.</p>
+    </div>
+
+    <form id="equipmentOrderForm" action="{% url 'order_equipment' %}" method="POST" class="form-wrapper">
+      {% csrf_token %}
+      <!-- Left: Equipment Selection -->
+      <div class="form-equipment">
+        <h3 class="form-step-title">
+          <span class="step-number">1</span>
+          What do you need?
+        </h3>
+        <p class="form-step-desc">Select all services you'd like to add</p>
+
+        <div class="equipment-checklist" id="equipmentChecklist">
+          <!-- Equipment Option 1 -->
+          <label class="equipment-option">
+            <input type="checkbox" name="equipment" value="sound-system">
+            <div class="equipment-option-card">
+              <div class="equipment-option-icon">🎙️</div>
+              <div class="equipment-option-content">
+                <strong>Sound System</strong>
+                <span>Microphones & speakers</span>
+              </div>
+              <svg class="equipment-check" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </label>
+
+          <!-- Equipment Option 2 -->
+          <label class="equipment-option">
+            <input type="checkbox" name="equipment" value="lighting">
+            <div class="equipment-option-card">
+              <div class="equipment-option-icon">💡</div>
+              <div class="equipment-option-content">
+                <strong>Lighting Rig</strong>
+                <span>LED & spotlights</span>
+              </div>
+              <svg class="equipment-check" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </label>
+
+          <!-- Equipment Option 3 -->
+          <label class="equipment-option">
+            <input type="checkbox" name="equipment" value="stage">
+            <div class="equipment-option-card">
+              <div class="equipment-option-icon">🎭</div>
+              <div class="equipment-option-content">
+                <strong>Stage Setup</strong>
+                <span>Platforms & backdrops</span>
+              </div>
+              <svg class="equipment-check" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </label>
+
+          <!-- Equipment Option 4 -->
+          <label class="equipment-option">
+            <input type="checkbox" name="equipment" value="projection">
+            <div class="equipment-option-card">
+              <div class="equipment-option-icon">🎬</div>
+              <div class="equipment-option-content">
+                <strong>Projection & AV</strong>
+                <span>Projectors & displays</span>
+              </div>
+              <svg class="equipment-check" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </label>
+
+          <!-- Equipment Option 5 -->
+          <label class="equipment-option">
+            <input type="checkbox" name="equipment" value="furniture">
+            <div class="equipment-option-card">
+              <div class="equipment-option-icon">🪑</div>
+              <div class="equipment-option-content">
+                <strong>Furniture & Decor</strong>
+                <span>Tables, chairs & setup</span>
+              </div>
+              <svg class="equipment-check" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </label>
+
+          <!-- Equipment Option 6 -->
+          <label class="equipment-option">
+            <input type="checkbox" name="equipment" value="catering">
+            <div class="equipment-option-card">
+              <div class="equipment-option-icon">🍽️</div>
+              <div class="equipment-option-content">
+                <strong>Catering Setup</strong>
+                <span>Serving stations & bar</span>
+              </div>
+              <svg class="equipment-check" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </label>
+
+          <!-- Equipment Option 7 -->
+          <label class="equipment-option">
+            <input type="checkbox" name="equipment" value="photography">
+            <div class="equipment-option-card">
+              <div class="equipment-option-icon">📸</div>
+              <div class="equipment-option-content">
+                <strong>Photography & Video</strong>
+                <span>Media coverage</span>
+              </div>
+              <svg class="equipment-check" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </label>
+
+          <!-- Equipment Option 8 -->
+          <label class="equipment-option">
+            <input type="checkbox" name="equipment" value="streaming">
+            <div class="equipment-option-card">
+              <div class="equipment-option-icon">📡</div>
+              <div class="equipment-option-content">
+                <strong>Live Streaming</strong>
+                <span>Online broadcast</span>
+              </div>
+              <svg class="equipment-check" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Right: Event Details Form -->
+      <div class="form-details">
+        <h3 class="form-step-title">
+          <span class="step-number">2</span>
+          Tell us about your event
+        </h3>
+        <p class="form-step-desc">Help us create the perfect package</p>
+
+        <div class="event-form">
+          <!-- Name -->
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="full_name" placeholder="Your name" required>
+          </div>
+
+          <!-- Contact -->
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" name="phone" placeholder="+250 7XX XXX XXX" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+
+          <!-- Event Type & Date -->
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>Event Type</label>
+              <select name="event_type" required>
+                <option value="">Select event type</option>
+                <option value="Workshop or Seminar">Workshop or Seminar</option>
+                <option value="Corporate Meeting">Corporate Meeting</option>
+                <option value="Exhibition or Showcase">Exhibition or Showcase</option>
+                <option value="Team Building">Team Building</option>
+                <option value="Private Party">Private Party</option>
+                <option value="Family Celebration">Family Celebration</option>
+                <option value="Community Event">Community Event</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Preferred Date</label>
+              <input type="date" name="event_date" required>
+            </div>
+          </div>
+
+          <!-- Guests & Space -->
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>Expected Guests</label>
+              <input type="number" name="expected_guests" placeholder="Number of guests" min="1" required>
+            </div>
+            <div class="form-group">
+              <label>Space Type</label>
+              <select name="space_type" required>
+                <option value="">Select space</option>
+                <option value="Indoor Rooms & Halls">Indoor Rooms & Halls</option>
+                <option value="Outdoor Garden Space">Outdoor Garden Space</option>
+                <option value="Both (Combined)">Both (Combined)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Additional Details -->
+          <div class="form-group">
+            <label>Tell us more about your event</label>
+            <textarea name="special_requirements" placeholder="Theme, special requirements, specific needs..." rows="4"></textarea>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="form-submit-btn">
+            Send My Request
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3.333 8h9.334M8.667 3.333l4.667 4.667-4.667 4.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Contact Info -->
+    <!-- <div class="form-contact-bar">
+          <div class="contact-item">
+            <span>📞</span>
+            <a href="tel:+250788342031">+250 788 342 031</a>
+          </div>
+          <div class="contact-item">
+            <span>✉️</span>
+            <a href="mailto:info@isonga.rw">info@isonga.rw</a>
+          </div>
+          <div class="contact-item">
+            <span>📍</span>
+            <span>Musanze, Rwanda</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</section>
+ 
+<!-- FINAL CTA -->
+<!-- <section class="final-cta">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Let's make your event happen.</h2>
+      <p>Book a creative, flexible, and professionally supported venue in Musanze — for business, culture, community, or celebration.</p>
+      <div class="cta-btns">
+        <a href="#contact" class="cta-btn-dark">Request a Quote</a>
+        <a href="#contact" class="cta-btn-ghost">Book a Visit</a>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'core/js/hosts.js' %}"></script>
+{% endblock %}

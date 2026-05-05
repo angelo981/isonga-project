@@ -292,6 +292,271 @@ body { font-family: var(--font-sans); }
   pointer-events: none; z-index: 3;
 }
 
+/* ══════════════════════════════════════
+   ENERGY RADIO PLAYER
+══════════════════════════════════════ */
+.energy-radio-section {
+  position: relative; z-index: 2;
+  width: 100%; padding: 36px 48px;
+  background: linear-gradient(135deg, rgba(42,130,200,0.15) 0%, rgba(240,165,0,0.08) 100%);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+}
+
+.energy-radio-container {
+  max-width: 1220px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  flex-wrap: wrap;
+}
+
+.radio-left {
+  display: flex; align-items: center; gap: 18px; min-width: 240px;
+}
+
+.radio-icon {
+  font-size: 2.8rem;
+  display: flex; align-items: center; justify-content: center;
+  width: 60px; height: 60px;
+  background: linear-gradient(135deg, rgba(42,130,200,0.25), rgba(240,165,0,0.15));
+  border-radius: 14px;
+  border: 1.5px solid rgba(42,130,200,0.4);
+  box-shadow: 0 8px 24px rgba(42,130,200,0.15), inset 0 1px 2px rgba(255,255,255,0.1);
+}
+
+.radio-info {
+  display: flex; flex-direction: column;
+}
+
+.radio-label {
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5); margin-bottom: 4px; font-weight: 600;
+}
+
+.radio-title {
+  font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 3px;
+  background: linear-gradient(135deg, #fff, #cde7f7); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.radio-subtitle {
+  font-size: 0.8rem; color: rgba(255,255,255,0.6);
+}
+
+.radio-center {
+  flex: 1.5; min-width: 280px; max-width: 500px;
+  text-align: center;
+  padding: 24px 28px; border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(42,130,200,0.2);
+}
+
+.now-playing-label {
+  display: block; font-size: 0.65rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; font-weight: 600;
+}
+
+.now-playing-title {
+  font-size: 1.35rem; font-weight: 800; letter-spacing: 0.3px;
+  color: #fff;
+  text-shadow: 0 3px 12px rgba(42,130,200,0.4);
+  margin: 0; padding: 0;
+  line-height: 1.4;
+  background: linear-gradient(135deg, #fff, #87ceeb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  white-space: normal;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.radio-right {
+  display: flex; align-items: center; gap: 14px;
+}
+
+.radio-btn {
+  width: 50px; height: 50px;
+  border: none; border-radius: 12px;
+  background: rgba(42,130,200,0.2);
+  color: rgba(255,255,255,0.85);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease;
+  border: 1.5px solid rgba(42,130,200,0.3);
+  font-size: 1.1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.radio-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.4s ease;
+}
+
+.radio-btn:hover {
+  background: rgba(42,130,200,0.35);
+  border-color: rgba(42,130,200,0.6);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(42,130,200,0.25), 0 0 0 8px rgba(42,130,200,0.1);
+  transform: translateY(-2px);
+}
+
+.radio-btn:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(42,130,200,0.15);
+}
+
+.play-btn:hover {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 8px 24px rgba(42,130,200,0.25), 0 0 0 8px rgba(42,130,200,0.1); }
+  50% { box-shadow: 0 8px 24px rgba(42,130,200,0.25), 0 0 0 16px rgba(42,130,200,0.05); }
+}
+
+.radio-btn.hidden {
+  display: none;
+}
+
+.radio-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.play-btn:disabled::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  left: 50%;
+  margin: -9px 0 0 -9px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: rgba(255,255,255,0.8);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.tune-btn {
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.tune-btn:hover {
+  background: linear-gradient(135deg, rgba(240,165,0,0.3), rgba(42,130,200,0.3));
+}
+
+/* Volume Control */
+.volume-control {
+  display: flex; align-items: center;
+  padding: 8px 12px;
+  background: rgba(42,130,200,0.1);
+  border-radius: 20px;
+  border: 1.5px solid rgba(42,130,200,0.2);
+  gap: 10px;
+}
+
+.mute-btn {
+  width: 32px; height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(42,130,200,0.15);
+  color: rgba(42,130,200,0.9);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  border: 1.5px solid rgba(42,130,200,0.25);
+  flex-shrink: 0;
+}
+
+.mute-btn:hover {
+  background: rgba(42,130,200,0.25);
+  color: rgba(42,130,200,1);
+  border-color: rgba(42,130,200,0.4);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(42,130,200,0.3);
+}
+
+.mute-btn:active {
+  transform: scale(0.95);
+}
+
+.mute-btn.muted {
+  background: rgba(220,53,69,0.15);
+  color: rgba(220,53,69,0.9);
+  border-color: rgba(220,53,69,0.25);
+}
+
+.mute-btn.muted:hover {
+  background: rgba(220,53,69,0.25);
+  color: rgba(220,53,69,1);
+  border-color: rgba(220,53,69,0.4);
+  box-shadow: 0 4px 12px rgba(220,53,69,0.3);
+}
+
+.volume-slider {
+  width: 100px; height: 4px;
+  border-radius: 2px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(90deg, rgba(42,130,200,0.3) 0%, rgba(42,130,200,0.3) 100%);
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2a82c8, #4a9fd8);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(42,130,200,0.4);
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(42,130,200,0.6);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2a82c8, #4a9fd8);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(42,130,200,0.4);
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(42,130,200,0.6);
+}
+
+.volume-slider::-moz-range-track {
+  background: transparent;
+  border: none;
+}
+
 /* Bottom bar */
 .hero-bottom {
   position: relative; z-index: 2;
@@ -326,11 +591,25 @@ body { font-family: var(--font-sans); }
   .strip-header { padding-right: 24px; }
   .strip-fade-left { left: 24px; }
   .hero-bottom { padding: 0 24px 14px; }
+  .energy-radio-section { padding: 24px; }
+  .energy-radio-container { gap: 24px; }
+  .radio-left { flex: 1 1 100%; }
+  .radio-center { min-width: 150px; }
+  .radio-btn { width: 44px; height: 44px; }
 }
 @media (max-width: 560px) {
   .hero h1 { font-size: 2.3rem; }
   .hero-right { flex-direction: column; }
   .ecard { flex: 0 0 190px; height: 130px; }
+  .energy-radio-section { padding: 18px 16px; }
+  .energy-radio-container { flex-direction: column; gap: 16px; align-items: stretch; }
+  .radio-left { flex-direction: column; align-items: center; text-align: center; }
+  .radio-center { width: 100%; max-width: 100%; }
+  .radio-right { width: 100%; justify-content: center; }
+  .radio-icon { width: 50px; height: 50px; font-size: 2.2rem; }
+  .radio-title { font-size: 1.2rem; }
+  .radio-subtitle { font-size: 0.7rem; }
+  .now-playing-title { font-size: 1.1rem; font-weight: 800; letter-spacing: 0.2px; }
 }
   /* ── SECTION COMMONS ── */
   section { padding: 96px 0; }

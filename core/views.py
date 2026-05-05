@@ -111,6 +111,12 @@ def all_events(request):
         'selected_category': selected_category,
         'active_tab': tab if tab in ['upcoming', 'past'] else 'upcoming',
     })
+def hosts(request):
+    from django.conf import settings
+    context = {
+        'media_url': settings.MEDIA_URL,
+    }
+    return render(request, 'core/hosts.html', context)
 
 
 def talent(request):
@@ -274,3 +280,84 @@ def contact(request):
     else:
         form = ContactForm()
     return render(request, 'core/contact.html', {'form': form})
+
+
+def radio_stream(request):
+    """Proxy endpoint for Energy Radio stream to bypass CORS issues"""
+    import requests
+    from django.http import StreamingHttpResponse
+    
+    stream_url = 'https://eu4.fastcast4u.com/proxy/energy?mp=/stream'
+    
+    try:
+        # Make request to the actual stream with proper headers
+        response = requests.get(
+            stream_url,
+            headers={
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                'Accept': 'audio/mpeg, audio/*;q=0.9, */*;q=0.8',
+                'Connection': 'keep-alive',
+            },
+            stream=True,
+            timeout=10
+        )
+        
+        if response.status_code == 200:
+            # Stream the audio content with proper CORS headers
+            stream_response = StreamingHttpResponse(
+                response.iter_content(chunk_size=8192),
+                content_type='audio/mpeg'
+            )
+            stream_response['Access-Control-Allow-Origin'] = '*'
+            stream_response['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+            stream_response['Access-Control-Allow-Headers'] = 'Content-Type'
+            stream_response['Cache-Control'] = 'no-cache'
+            return stream_response
+        else:
+            return StreamingHttpResponse('Stream unavailable', status=503)
+    except Exception as e:
+        print(f'Error proxying stream: {e}')
+        return StreamingHttpResponse('Stream error', status=503)
+
+
+def order_equipment(request):
+    """Handle equipment order submissions"""
+    if request.method == 'POST':
+        from .models import EquipmentOrder
+        
+        try:
+            # Get form data
+            full_name = request.POST.get('full_name')
+            email = request.POST.get('email')
+            phone = request.POST.get('phone')
+            event_type = request.POST.get('event_type')
+            event_date = request.POST.get('event_date')
+            expected_guests = request.POST.get('expected_guests')
+            space_type = request.POST.get('space_type')
+            special_requirements = request.POST.get('special_requirements', '')
+            
+            # Get selected services
+            selected_services = request.POST.getlist('equipment')
+            selected_services_str = ','.join(selected_services) if selected_services else ''
+            
+            # Create order
+            order = EquipmentOrder.objects.create(
+                full_name=full_name,
+                email=email,
+                phone=phone,
+                event_type=event_type,
+                event_date=event_date,
+                expected_guests=int(expected_guests),
+                space_type=space_type,
+                selected_services=selected_services_str,
+                special_requirements=special_requirements,
+            )
+            
+            messages.success(request, f'Thank you, {full_name}! Your event request has been received. We will contact you within 24 hours.')
+            return redirect('hosts')
+        except Exception as e:
+            messages.error(request, f'Error processing your request: {str(e)}')
+            return redirect('hosts')
+    
+    return redirect('hosts')
+

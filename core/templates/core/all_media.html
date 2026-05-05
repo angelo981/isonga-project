@@ -217,38 +217,6 @@
   </div>
 </section>
 
-<!-- ── VIDEOS SECTION ── -->
-{% if videos %}
-  <section class="all-media-section" style="background: #0f1a27; border-top: 1px solid rgba(255,255,255,0.1);">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow light">Video Library</p>
-        <h2>All <em>Videos</em></h2>
-        <p>From live performances to workshop recaps and documentary features.</p>
-      </div>
-
-      <div class="all-media-grid">
-        {% for item in videos %}
-          <a class="all-media-item" href="{% url 'media_detail' item.slug %}">
-            {% if item.image %}
-              <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
-            {% else %}
-              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="{{ item.title }}" loading="lazy">
-            {% endif %}
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">▶</div>
-            <div class="all-media-overlay">
-              <div class="all-media-label">
-                <span class="all-media-dot"></span>{{ item.title }}
-              </div>
-            </div>
-            <div class="all-media-zoom">⊕</div>
-          </a>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-{% endif %}
-
 <!-- ── BACK BUTTON SECTION ── -->
 <section class="all-media-section" style="background: #0a1520; border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 0;">
   <div class="wrap" style="text-align: center;">

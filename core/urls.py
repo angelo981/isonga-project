@@ -10,6 +10,7 @@ urlpatterns = [
     path('events/', views.events, name='events'),
     path('all-events/', views.all_events, name='all_events'),
     path('events/<slug:slug>/', views.events_detail, name='events_detail'),
+    path('hosts/', views.hosts, name='hosts'),
     path('talent/', views.talent, name='talent'),
     path('talent/<slug:slug>/', views.talent_detail, name='talent_detail'),
     path('partner/', lambda request: redirect('partnerships', permanent=True)),
@@ -23,4 +24,6 @@ urlpatterns = [
     path('blog/<slug:slug>/', views.blog_detail, name='blog_detail'),
     path('contact/', views.contact, name='contact'),
     path('apply/', views.apply, name='apply'),
+    path('radio/stream/', views.radio_stream, name='radio_stream'),
+    path('order-equipment/', views.order_equipment, name='order_equipment'),
 ]

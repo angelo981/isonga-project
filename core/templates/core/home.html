@@ -50,7 +50,7 @@
         <div class="stat-card"><strong>500+</strong><span>Youth Annually</span></div>
         <div class="stat-card"><strong>100+</strong><span>Events Planned</span></div>
         <div class="stat-card"><strong>10+</strong><span>Partnerships</span></div>
-        <div class="stat-card"><strong>6</strong><span>Core Programs</span></div>
+        <div class="stat-card"><strong>4</strong><span>Core Programs</span></div>
       </div>
       <div class="event-card">
         <div class="event-card-top">
@@ -105,6 +105,53 @@
     </div>
     <div class="strip-fade-left"></div>
     <div class="strip-fade"></div>
+  </div>
+
+  <!-- ══════════════ ENERGY RADIO PLAYER ══════════════ -->
+  <div class="energy-radio-section">
+    <div class="energy-radio-container">
+      <div class="radio-left">
+        <div class="radio-icon">📻</div>
+        <div class="radio-info">
+          <p class="radio-label">Now Streaming</p>
+          <h3 class="radio-title">Energy Radio</h3>
+          <p class="radio-subtitle">Curated music & content for creatives</p>
+        </div>
+      </div>
+      <div class="radio-center">
+        <div class="now-playing">
+          <p class="now-playing-title">We Energize The Creative Generation!</p>
+        </div>
+      </div>
+      <div class="radio-right">
+        <div class="volume-control">
+          <button class="mute-btn" id="muteBtn" aria-label="Toggle mute">
+            <i class="fas fa-volume-up"></i>
+          </button>
+          <input type="range" id="radioVolume" class="volume-slider" min="0" max="100" value="70" aria-label="Volume control">
+        </div>
+        <button class="radio-btn play-btn" id="radioPlayBtn" aria-label="Play radio">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+        <button class="radio-btn pause-btn hidden" id="radioPauseBtn" aria-label="Pause radio">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="6" y="4" width="4" height="16"/>
+            <rect x="14" y="4" width="4" height="16"/>
+          </svg>
+        </button>
+        <a href="#" class="radio-btn tune-btn" title="Tune in">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 1v6m0 6v6M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <!-- Audio element for Energy Radio streaming -->
+    <audio id="radio-audio-player" preload="none">
+      <source src="https://eu4.fastcast4u.com/proxy/energy?mp=/stream" type="audio/mpeg">
+    </audio>
   </div>
 
   <div class="hero-bottom">

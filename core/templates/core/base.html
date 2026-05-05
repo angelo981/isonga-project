@@ -7,6 +7,7 @@
     <title>{% block title %}ISONGA CENTRE{% endblock %}</title>
     <meta name="description" content="ISONGA CENTRE is a creative, cultural, and youth empowerment hub in Musanze, Rwanda.">
     <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -23,7 +24,13 @@
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'programs' %}">Programs</a></li>
-                    <li><a href="{% url 'events' %}">Events</a></li>
+                    <li class="dropdown">
+                        <a href="{% url 'events' %}">Events & Hosting</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'events' %}">Events</a></li>
+                            <li><a href="{% url 'hosts' %}">Host with us</a></li>
+                        </ul>
+                    </li>
                     <li><a href="{% url 'talent' %}">Talent</a></li>
                     <li><a href="{% url 'partnerships' %}">Partnerships</a></li>
                     <li><a href="{% url 'media_gallery' %}">Media</a></li>
@@ -111,13 +118,28 @@
         menuToggle.classList.toggle('active');
       });
       
-      // Close menu when a link is clicked
+      // Handle dropdown menus on mobile
+      const dropdowns = navMenu.querySelectorAll('.dropdown');
+      dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('> a');
+        link.addEventListener('click', function(e) {
+          if (window.innerWidth <= 900) {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+          }
+        });
+      });
+      
+      // Close menu when a non-dropdown link is clicked
       const navLinks = navMenu.querySelectorAll('a');
       navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          navMenu.classList.remove('active');
-          menuToggle.classList.remove('active');
-        });
+        // Don't close menu for dropdown parent links on mobile
+        if (!link.closest('.dropdown') || !link.parentElement.classList.contains('dropdown')) {
+          link.addEventListener('click', function() {
+            navMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+          });
+        }
       });
     }
   });

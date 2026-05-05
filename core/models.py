@@ -22,6 +22,7 @@ class Event(models.Model):
     slug = models.SlugField(unique=True)
     def __str__(self):
         return self.title_en
+    
 class Gallery(models.Model):
     GALLERY_CHOICES = [
         ('photo', 'Photo'),
@@ -89,4 +90,71 @@ class ProgramApplication(models.Model):
     
     def __str__(self):
         return f"{self.full_name} - {self.get_program_interest_display()}"
-  
+
+
+class EquipmentOrder(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('confirmed', 'Confirmed'),
+        ('cancelled', 'Cancelled'),
+        ('completed', 'Completed'),
+    ]
+    
+    SERVICE_CHOICES = [
+        ('sound-system', 'Sound System'),
+        ('lighting', 'Lighting Rig'),
+        ('stage', 'Stage Setup'),
+        ('projection', 'Projection & AV'),
+        ('furniture', 'Furniture & Decor'),
+        ('catering', 'Catering Setup'),
+        ('photography', 'Photography & Video'),
+        ('streaming', 'Live Streaming'),
+    ]
+    
+    # Customer Information
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    
+    # Event Information
+    event_type = models.CharField(max_length=100)
+    event_date = models.DateField()
+    expected_guests = models.IntegerField()
+    space_type = models.CharField(max_length=50, choices=[
+        ('indoor', 'Indoor Rooms & Halls'),
+        ('outdoor', 'Outdoor Garden Space'),
+        ('both', 'Both (Combined)'),
+    ])
+    
+    # Services Selected (comma-separated list)
+    selected_services = models.TextField(blank=True, null=True, help_text="Services requested by the client")
+    
+    # Additional Details
+    special_requirements = models.TextField(blank=True, null=True)
+    
+    # Pricing
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    
+    # Order Status & Timestamps
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    order_date = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"Order #{self.id} - {self.full_name} ({self.event_date})"
+    
+    def get_services_display(self):
+        """Format selected services for display"""
+        if not self.selected_services:
+            return "No services selected"
+        services = self.selected_services.split(',')
+        service_dict = dict(self.SERVICE_CHOICES)
+        formatted = []
+        for service_code in services:
+            service_code = service_code.strip()
+            if service_code in service_dict:
+                formatted.append(service_dict[service_code])
+        return ", ".join(formatted) if formatted else "No services selected"
+    
+    class Meta:
+        ordering = ['-order_date']
