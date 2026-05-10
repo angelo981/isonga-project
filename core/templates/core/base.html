@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}ISONGA CENTRE{% endblock %}</title>
     <meta name="description" content="ISONGA CENTRE is a creative, cultural, and youth empowerment hub in Musanze, Rwanda.">
+    <link rel="icon" href="{% static 'img/isongalogo2.png' %}" type="image/png">
     <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     {% block extra_css %}{% endblock %}
@@ -13,7 +14,10 @@
 <body>
     <header class="site-header">
         <div class="container nav-wrap">
-            <a href="{% url 'home' %}" class="logo">ISONGA <span>CENTRE</span></a>
+            <a href="{% url 'home' %}" class="logo">
+                <img src="{% static 'img/isongalogo2.png' %}" alt="Isonga Centre Logo" class="logo-img">
+                ISONGA <span>CENTRE</span>
+            </a>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>

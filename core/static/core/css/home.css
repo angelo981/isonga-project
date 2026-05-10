@@ -126,7 +126,7 @@ body { font-family: var(--font-sans); }
   position: relative; z-index: 2;
   width: 100%; max-width: 1220px;
   margin: 0 auto;
-  padding: 72px 48px 28px;      /* was 100px top, 40px bottom */
+  padding: 10px 48px 28px;      /* was 100px top, 40px bottom */
   display: grid;
   grid-template-columns: 1fr 360px;
   gap: 44px;                     /* was 56px */

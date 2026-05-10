@@ -338,11 +338,28 @@
         <h2 class="sec-title">ISONGA CENTRE in Musanze<br><em>Find us on the map</em></h2>
         <p>Join us at the heart of Rwanda's creative ecosystem. See our exact location, get directions, and plan your visit to our workspace and community hub.</p>
       </div>
-      <div style="flex:0 0 480px; max-width:480px; height:380px; border:1px solid #dbe6ef; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3051.5903750908034!2d29.52644451522161!3d-1.5002812987130389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d9c52abe8912f7%3A0x339a1a43a8082d5f!2sMusanze%20City%2C%20Northern%20Province%2C%20Rwanda!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus"
-          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div style="flex:0 0 480px; max-width:480px; height:380px; border:1px solid #dbe6ef; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.06); position:relative;">
+        <div style="position:relative; width:100%; height:100%; background:#f5f5f5;">
+          <!-- Main iframe -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3051.5903750908034!2d29.52644451522161!3d-1.5002812987130389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d9c52abe8912f7%3A0x2f4ff5c8b8b8c0b6!2sISOMGA%20CENTRE%2C%20Musanze!5e0!3m2!1sen!2sru!4v1710000000000"
+            width="100%" height="100%" style="border:0; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <!-- Fallback view (shows if map fails) -->
+          <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); display:flex; flex-direction:column; align-items:center; justify-content:center;" class="map-fallback">
+            <div style="text-align:center; z-index:5;">
+              <div style="font-size:4rem; margin-bottom:12px;">📍</div>
+              <div style="font-size:1.1rem; font-weight:700; color:#1C1C1A; margin-bottom:6px;">ISONGA CENTRE</div>
+              <div style="font-size:0.9rem; color:#6B6A66; margin-bottom:16px;">Musanze, Rwanda</div>
+              <div style="display:inline-block; background:#FF5252; color:white; padding:6px 14px; border-radius:18px; font-size:0.8rem; font-weight:700; letter-spacing:0.5px;">📍 Highlighted Location</div>
+            </div>
+          </div>
+        </div>
+        <a href="https://maps.app.goo.gl/LZuQq3bnbcB2scLQ7" target="_blank" rel="noopener" style="position:absolute; bottom:16px; right:16px; background:white; color:#1d8fe1; padding:10px 18px; border-radius:20px; font-size:0.85rem; font-weight:600; text-decoration:none; box-shadow:0 2px 10px rgba(0,0,0,0.15); z-index:10; border:2px solid #1d8fe1; transition:all 0.3s ease;" onmouseover="this.style.background='#1d8fe1'; this.style.color='white';" onmouseout="this.style.background='white'; this.style.color='#1d8fe1';">Get Directions →</a>
       </div>
+      <style>
+        .map-fallback { opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
+        iframe[src*="maps"][style*="display:none"], iframe[onerror] ~ .map-fallback { opacity:1; pointer-events:auto; }
+      </style>
     </div>
   </div>
 </section>
@@ -351,4 +368,35 @@
 
 {% block extra_js %}
 <script src="{% static 'core/js/home.js' %}"></script>
+<script>
+  // Map fallback handler
+  document.addEventListener('DOMContentLoaded', function() {
+    const mapIframes = document.querySelectorAll('iframe[src*="maps.google.com"]');
+    mapIframes.forEach(iframe => {
+      const fallback = iframe.parentElement.querySelector('.map-fallback');
+      if (fallback) {
+        let loaded = false;
+        
+        iframe.addEventListener('load', function() {
+          loaded = true;
+          fallback.style.opacity = '0';
+          fallback.style.pointerEvents = 'none';
+        });
+        
+        iframe.addEventListener('error', function() {
+          fallback.style.opacity = '1';
+          fallback.style.pointerEvents = 'auto';
+        });
+        
+        // Fallback timeout - if iframe hasn't loaded after 3 seconds
+        setTimeout(function() {
+          if (!loaded) {
+            fallback.style.opacity = '1';
+            fallback.style.pointerEvents = 'auto';
+          }
+        }, 3000);
+      }
+    });
+  });
+</script>
 {% endblock %}

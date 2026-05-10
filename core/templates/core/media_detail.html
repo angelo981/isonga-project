@@ -335,6 +335,9 @@
     </div>
 
     <!-- Navigation Buttons -->
+    {% if previous_media %}
+      <a href="{% url 'media_detail' previous_media.slug %}" class="nav-button prev" title="Previous image (Left arrow or P)">‹</a>
+    {% endif %}
     {% if next_media %}
       <a href="{% url 'media_detail' next_media.slug %}" class="nav-button next" title="Next image (Right arrow or N)">›</a>
     {% endif %}
@@ -362,6 +365,7 @@
 <script>
   // Keyboard navigation
   document.addEventListener('keydown', function(event) {
+    const prevBtn = document.querySelector('.nav-button.prev');
     const nextBtn = document.querySelector('.nav-button.next');
     const closeBtn = document.querySelector('.close-btn');
 
@@ -369,6 +373,14 @@
       case 'Escape':
         if (closeBtn) {
           window.location.href = closeBtn.href;
+        }
+        break;
+      case 'ArrowLeft':
+      case 'p':
+      case 'P':
+        event.preventDefault();
+        if (prevBtn) {
+          window.location.href = prevBtn.href;
         }
         break;
       case 'ArrowRight':

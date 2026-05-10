@@ -39,10 +39,10 @@ class TalentAdmin(admin.ModelAdmin):
 
 
 class ContactMessageAdmin(admin.ModelAdmin):
-    list_display = ("name", "email", "subject", "created_at")
+    list_display = ("name", "email", "phone_number", "created_at")
     list_filter = ("created_at",)
-    search_fields = ("name", "email", "subject", "message")
-    readonly_fields = ("created_at", "name", "email", "subject", "message")
+    search_fields = ("name", "email", "phone_number", "message")
+    readonly_fields = ("created_at", "name", "email", "phone_number", "message")
     
     def has_add_permission(self, request):
         return False

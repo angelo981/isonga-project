@@ -177,23 +177,32 @@ def media_detail(request, slug):
     if not media:
         raise Http404('Media not found')
     
-    # Get all photos in the same category for navigation
-    all_media_in_category = Gallery.objects.filter(category=media.category).order_by('-created_at')
-    current_index = list(all_media_in_category.values_list('id', flat=True)).index(media.id) if media.id in all_media_in_category.values_list('id', flat=True) else 0
+    # Get all media items (across all categories) ordered by date
+    all_media = Gallery.objects.all().order_by('-created_at')
+    current_index = list(all_media.values_list('id', flat=True)).index(media.id) if media.id in all_media.values_list('id', flat=True) else 0
+    
+    # Get previous media item
+    previous_media = None
+    if current_index > 0:
+        previous_media = all_media[current_index - 1]
+    else:
+        # Loop back to last
+        previous_media = all_media.last()
     
     # Get next media item
     next_media = None
-    if current_index + 1 < all_media_in_category.count():
-        next_media = all_media_in_category[current_index + 1]
+    if current_index + 1 < all_media.count():
+        next_media = all_media[current_index + 1]
     else:
         # Loop back to first
-        next_media = all_media_in_category.first()
+        next_media = all_media.first()
     
     # Get all media items for carousel
-    media_list = list(all_media_in_category)
+    media_list = list(all_media)
     
     context = {
         'media': media,
+        'previous_media': previous_media,
         'next_media': next_media,
         'media_list': media_list,
         'current_index': current_index,

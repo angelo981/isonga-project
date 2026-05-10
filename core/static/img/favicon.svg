@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <style>
+      .circle-border { fill: none; stroke: #ffffff; stroke-width: 2; }
+      .logo-area { fill: #ffffff; }
+    </style>
+  </defs>
+  <!-- White border circle -->
+  <circle cx="24" cy="24" r="23" class="circle-border"/>
+  <!-- White background circle -->
+  <circle cx="24" cy="24" r="22" class="logo-area" opacity="0.05"/>
+  <!-- Logo image with padding -->
+  <image href="isongalogo.png" x="8" y="8" width="32" height="32" preserveAspectRatio="xMidYMid meet"/>
+</svg>

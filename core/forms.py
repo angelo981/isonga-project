@@ -11,16 +11,15 @@ class ContactForm(forms.ModelForm):
         ('general', 'General Inquiry'),
     ]
 
-    phone_number = forms.CharField(max_length=30, required=False, label="Phone Number (Optional)")
-    contact_type = forms.ChoiceField(choices=CONTACT_TYPES, label="What's your interest?")
+    contact_type = forms.ChoiceField(choices=CONTACT_TYPES, label="What's your interest?", required=False)
 
     class Meta:
         model = ContactMessage
-        fields = ['name', 'email', 'subject', 'message']
+        fields = ['name', 'email', 'phone_number', 'message']
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Your Full Name', 'max_length': 100}),
             'email': forms.EmailInput(attrs={'placeholder': 'Your Email'}),
-            'subject': forms.TextInput(attrs={'placeholder': 'Subject', 'max_length': 200}),
+            'phone_number': forms.TextInput(attrs={'placeholder': 'Your Phone Number', 'max_length': 30, 'type': 'tel'}),
             'message': forms.Textarea(attrs={'rows': 5, 'placeholder': 'Your message...'}),
         }
 
