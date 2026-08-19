@@ -80,9 +80,9 @@
 <div class="stats-strip">
   <div class="wrap">
     <div class="stats-inner">
-      <div class="s-stat"><strong>200+</strong><span>Photos Published</span></div>
+      <div class="s-stat"><strong>20+</strong><span>Photos Published</span></div>
       <div class="s-stat"><strong>30+</strong><span>Videos Captured</span></div>
-      <div class="s-stat"><strong>100+</strong><span>Events Documented</span></div>
+      <div class="s-stat"><strong>10+</strong><span>Events Documented</span></div>
       <div class="s-stat"><strong>6</strong><span>Media Categories</span></div>
     </div>
   </div>
@@ -103,7 +103,11 @@
     <div class="masonry">
       {% if photos %}
         {% for item in photos %}
-          <a class="m-item lightbox-trigger" href="{% url 'media_detail' item.slug %}">
+          {% if item.slug %}
+            <a class="m-item lightbox-trigger" href="{% url 'media_detail' item.slug %}">
+          {% else %}
+            <a class="m-item lightbox-trigger" href="{{ item.image.url }}">
+          {% endif %}
             <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
             <div class="m-overlay"><div class="m-label"><span class="m-cat-dot"></span>{{ item.title }}</div></div>
             <div class="m-zoom">⊕</div>
@@ -116,7 +120,7 @@
 
     {% if has_more_photos %}
       <div class="gallery-more-btn-wrap">
-        <a href="{% url 'all_media' %}" class="btn btn-more">View All {{ all_photos_count }} Photos →</a>
+        <a href="{% url 'all_media' %}" class="btn btn-more">View All Photos →</a>
       </div>
     {% endif %}
   </div>

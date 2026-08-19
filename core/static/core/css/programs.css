@@ -299,7 +299,49 @@
   @media (max-width: 960px) {
     .wrap { padding: 0 24px; }
     .hero-inner { grid-template-columns: 1fr; gap: 0; padding: 80px 24px 100px; }
-    .hero-nav { display: none; }
+    
+    .hero-nav {
+      display: block;
+      background: rgba(255,255,255,0.11);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 40px;
+      width: 100%;
+    }
+    
+    .hero-nav-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    
+    .hero-nav ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    
+    .hero-nav ul li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    
+    .hero-nav ul li a .dot {
+      width: 6px;
+      height: 6px;
+    }
+    
     .prog-card, .prog-card.flip { grid-template-columns: 1fr; }
     .pphoto { min-height: 240px; order: 0 !important; }
     .pbody  { order: 1 !important; padding: 36px 32px; }
@@ -313,6 +355,21 @@
     .cta-btns  { flex-direction: row; }
   }
   @media (max-width: 580px) {
+    .hero-nav ul {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    
+    .hero-nav-label {
+      font-size: 0.7rem;
+      margin-bottom: 10px;
+    }
+    
+    .hero-nav ul li a {
+      padding: 9px 10px;
+      font-size: 0.75rem;
+    }
+    
     .wshops-grid { grid-template-columns: 1fr; }
     .proc-steps  { grid-template-columns: 1fr; }
   }

@@ -154,9 +154,9 @@ def media_gallery(request):
     videos = media_items.exclude(Q(video_url='') | Q(video_url__isnull=True)).order_by('-created_at')
     categories = Category.objects.all()
     
-    # Limit photos to 8, check if there are more
-    photos_limited = photos[:8]
-    has_more_photos = photos.count() > 8
+    # Limit photos to 12, check if there are more
+    photos_limited = photos[:12]
+    has_more_photos = photos.count() > 12
     
     context = {
         'all_media': media_items,

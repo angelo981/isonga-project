@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils.text import slugify
 
 class User(AbstractUser):
     pass
@@ -37,6 +38,18 @@ class Gallery(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.title
+    def save(self, *args, **kwargs):
+        # Auto-generate a slug from the title if missing
+        if not self.slug and self.title:
+            base_slug = slugify(self.title)[:200]
+            slug = base_slug
+            counter = 1
+            # Ensure uniqueness
+            while Gallery.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
 class Blog(models.Model):
     
     title = models.CharField(max_length=200)

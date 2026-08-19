@@ -335,10 +335,10 @@
     </div>
 
     <!-- Navigation Buttons -->
-    {% if previous_media %}
+    {% if previous_media and previous_media.slug %}
       <a href="{% url 'media_detail' previous_media.slug %}" class="nav-button prev" title="Previous image (Left arrow or P)">‹</a>
     {% endif %}
-    {% if next_media %}
+    {% if next_media and next_media.slug %}
       <a href="{% url 'media_detail' next_media.slug %}" class="nav-button next" title="Next image (Right arrow or N)">›</a>
     {% endif %}
 

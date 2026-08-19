@@ -198,7 +198,11 @@
     {% if photos %}
       <div class="all-media-grid">
         {% for item in photos %}
-          <a class="all-media-item" href="{% url 'media_detail' item.slug %}">
+          {% if item.slug %}
+            <a class="all-media-item" href="{% url 'media_detail' item.slug %}">
+          {% else %}
+            <a class="all-media-item" href="{{ item.image.url }}">
+          {% endif %}
             <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
             <div class="all-media-overlay">
               <div class="all-media-label">
