@@ -31,7 +31,7 @@ class Gallery(models.Model):
     ]
     title = models.CharField(max_length=200)
     category = models.ForeignKey(Category, null=False, on_delete=models.CASCADE)
-    type = models.CharField(choices=GALLERY_CHOICES)
+    type = models.CharField(max_length=20, choices=GALLERY_CHOICES)
     image = models.ImageField(upload_to="gallery/", max_length=255)
     video_url = models.URLField(blank=True, null=True)
     slug = models.SlugField(unique=True, null=True, blank=True)
