@@ -2,8 +2,13 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'replace-me'
-DEBUG = True
-ALLOWED_HOSTS = ['192.168.0.125', 'localhost', '127.0.0.1']
+DEBUG = False
+if DEBUG is False:
+    ALLOWED_HOSTS = ['44.207.175.39', 'isongacentre.rw', 'www.isongacentre.rw', 'http://isongacentre.rw']
+    HOST = "https://isongacentre.rw"
+else:
+    ALLOWED_HOSTS = ['*']
+    HOST = "http://127.0.0.1:8000/"
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -45,12 +50,28 @@ TEMPLATES = [
 WSGI_APPLICATION = 'isonga_site.wsgi.application'
 ASGI_APPLICATION = 'isonga_site.asgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG is False:
+    
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'isongacentre',
+            'USER': 'energy',
+            'PORT': '3306',
+            'HOST': '127.0.0.1',
+            'PASSWORD': 'Energy@radio12',
+            'OPTIONS': {  
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+            }
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 AUTH_USER_MODEL = 'core.User'
 
