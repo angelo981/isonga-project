@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='gallery',
             name='type',
-            field=models.CharField(choices=[('photo', 'Photo'), ('video', 'Video')], default=1),
+            field=models.CharField(choices=[('photo', 'Photo'), ('video', 'Video')], default='photo', max_length=20),
             preserve_default=False,
         ),
     ]
