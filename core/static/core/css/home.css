@@ -643,6 +643,12 @@ body { font-family: var(--font-sans); }
   .view-all { font-size: 0.82rem; font-weight: 600; color: var(--sky); text-decoration: none; display: flex; align-items: center; gap: 4px; transition: gap 0.2s, color 0.2s; white-space: nowrap; }
   .view-all:hover { gap: 10px; color: var(--sky-mid); }
 
+  @media (min-width: 769px) {
+    .pillars-bg,
+    .why-bg,
+    .programs-bg { padding: 64px 0; }
+  }
+
   /* ── PILLARS / 3-IMAGE CARDS ── */
   .pillars-bg { background: var(--white); }
   .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }

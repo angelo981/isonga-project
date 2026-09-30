@@ -82,8 +82,8 @@
           <div class="ecard-overlay"></div>
           <div class="ecard-info">
             <p class="ecard-cat">{{ event.category.name}}</p>
-            <p class="ecard-name">Youth Beat Festival</p>
-            <p class="ecard-date">Jul 12, 2025</p>
+            <p class="ecard-name">My Talent, My Business.</p>
+            <p class="ecard-date">{{ event.event_date|date:"M j, Y" }}</p>
           </div>
         </div>
         {% endfor %}
@@ -95,8 +95,8 @@
           <div class="ecard-overlay"></div>
           <div class="ecard-info">
             <p class="ecard-cat">{{ event.category.name}}</p>
-            <p class="ecard-name">Youth Beat Festival</p>
-            <p class="ecard-date">Jul 12, 2025</p>
+            <p class="ecard-name">My Talent, My Business.</p>
+            <p class="ecard-date">{{ event.event_date|date:"M j, Y" }}</p>
           </div>
         </div>
         {% endfor %}

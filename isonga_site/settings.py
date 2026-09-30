@@ -2,7 +2,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'replace-me'
-DEBUG = False
+DEBUG = True
 if DEBUG is False:
     ALLOWED_HOSTS = ['44.207.175.39', 'isongacentre.rw', 'www.isongacentre.rw', 'http://isongacentre.rw']
     HOST = "https://isongacentre.rw"
